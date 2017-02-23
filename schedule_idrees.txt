@@ -1,0 +1,9 @@
+Schedule and deliverable:
+
+Implementation of a character class that includes
+functionality for stats, traits, and perks —————— Sun 02/26 (estimate: 1 hour)
+
+Reading in keyboard input ————————— Sat 03/4 (estimate: 1.5 hours)
+
+Implement timer and add to day menu —————— Sun 03/5 (estimate: 2 hours)
+
