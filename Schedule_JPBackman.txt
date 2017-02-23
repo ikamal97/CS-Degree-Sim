@@ -1,0 +1,4 @@
+Schedule and deliverable:
+  - Implement keyboard controls in menus -- Wed 03/01 (Estimate: 2 hrs)
+  - Implement the event roller(RNG) -- Fri 03/03 (Estimate: 2-3 hrs)
+  - Implement the character creation menu -- Wed 03/08 (Estimate: 2 hrs)
