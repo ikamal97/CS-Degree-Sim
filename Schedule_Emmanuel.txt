@@ -1,0 +1,5 @@
+1   Schdule and deliverable
+2 	- Day Menu dsiplaying time and character stats--03/04(Estimate:2.5 hrs)
+3 	- Night menu displaying Stats and options--03/05(Estimate: 2 hrs)
+4 	- Main menu (New Game, Load Save,Options,Exit03/06--(Estimate: 3 hrs)
+- 
