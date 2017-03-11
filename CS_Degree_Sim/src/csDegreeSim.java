@@ -25,9 +25,7 @@ public class csDegreeSim{
 		//new mainMenu/Game/etc...
 	}
 	
-	
 }
-
 
 
 interface Subject{
@@ -68,6 +66,7 @@ class Game implements Subject{
 }
 
 class Character implements Subject{
+	int characterStats;
 	private ArrayList<Observer> observers;
 	
 	public Character(){
@@ -84,19 +83,28 @@ class Character implements Subject{
 			observers.remove(index);
 	}
 	
+	//notify all observers that character stats changed and to update
 	public void notifyObservers(){
-		
+		for(Observer observer : observers){
+			observer.update(characterStats);
+		}
+	}
+	
+	public void statsChanged(){
+		notifyObservers();
 	}
 	
 }
 
-class mainMenu implements Observer, DisplayElement{
+class MainMenu implements Observer, DisplayElement{
 	private int screenStats;
 	private Subject Character;
+	private JLabel label;
 	
-	public mainMenu(Subject Character){
+	
+	public MainMenu(Subject Character){//recieves reference to subject
 		this.Character = Character;
-		Character.registerObserver(this);
+		Character.registerObserver(this);//registers this observer with subject
 	}
 	
 	public void update(int stats){
@@ -106,6 +114,10 @@ class mainMenu implements Observer, DisplayElement{
 	
 	public void display(){
 		//code for updating display
+		
 	}
 		
 }
+
+
+
