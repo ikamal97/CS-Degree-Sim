@@ -12,7 +12,6 @@ public class csDegreeSim{
 	JMenuBar mainMenu;
 	public JFrame frame;
 	
-	
 	public static void main(String[] args){
 		csDegreeSim CSDegreeSimulator = new csDegreeSim();
 		SwingUtilities.invokeLater(new Runnable() {
@@ -21,7 +20,6 @@ public class csDegreeSim{
             	CSDegreeSimulator.start();
             }
         });
-
 	}
 	
 	public csDegreeSim(){
@@ -36,9 +34,26 @@ public class csDegreeSim{
 		frame.setLocation(200, 200);
 	}
 		
-	private void start(){
-		//new mainMenu/Game/etc...
+	public void start(){
 		setPanel(new MainMenu(this));
+	}
+	
+	public void newGame(){
+		System.out.println("New Game selected");
+	}
+	
+	public void loadGame(){
+		System.out.println("Load Game selected");
+	}
+	
+	public void options(){
+		System.out.println("Options selected");
+	}
+	
+	public void exit(){
+		System.out.println("Exit selected");
+		frame.setVisible(false);
+		System.exit(0);
 	}
 	
 	public JFrame getJFrame(){
@@ -135,12 +150,16 @@ class Character implements Subject{
 	
 }
 
-class MainMenu extends JPanel implements Observer, DisplayElement{
+class MainMenu extends JPanel implements Observer{//, KeyListener
 	private int screenStats;
 	private Subject Character;
-	private JPanel panel;
 	private csDegreeSim sim;
-	private JTextField playerName;
+	private int button = 0;
+	private JPanel bodyPanel, headerPanel;
+	private JLabel headerLabel;
+	private JButton newGame, loadGame, options, exit;
+	private MainMenuListener listen;
+	
 	
 	public MainMenu(csDegreeSim sim){
 		this.sim = sim;
@@ -148,56 +167,74 @@ class MainMenu extends JPanel implements Observer, DisplayElement{
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
 		
-		JPanel headerPanel = new JPanel();
+		headerPanel = new JPanel();
 		headerPanel.setBackground(Color.white);
 		add(headerPanel, BorderLayout.NORTH);
 
-		JLabel headerLabel = new JLabel("Main Menu");
+		headerLabel = new JLabel("Main Menu Screen");
 		headerPanel.add(headerLabel);
 		
-		JPanel bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.BLUE);
+		bodyPanel = new JPanel();
+		bodyPanel.setBackground(Color.BLACK);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
 		
-		JButton newGame = new JButton("NEW GAME");
+		listen = new MainMenuListener();
+		//addKeyListener(this);
+		
+		createButtons();
+		
+		
+	}
+	
+	public void createButtons(){
+		newGame = new JButton("NEW GAME");
 		newGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-		newGame.setBackground(Color.GREEN);
+		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
+		newGame.setBackground(Color.BLACK);
 		newGame.setForeground(Color.WHITE);
-		newGame.setBounds(210, 20, 170, 30);
+		newGame.setBounds(210, 20, 172, 30);
 		newGame.setBorder(border);
+		newGame.addActionListener(listen);
+		newGame.setActionCommand("newGame");
+		//newGame.requestFocus();	
 		bodyPanel.add(newGame);
 		
-		JButton loadGame = new JButton("LOAD GAME");
+		loadGame = new JButton("LOAD GAME");
 		loadGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		loadGame.setBackground(Color.GREEN);
+		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		loadGame.setBackground(Color.BLACK);
 		loadGame.setForeground(Color.WHITE);
-		loadGame.setBounds(205, 90, 183, 30);
+		loadGame.setBounds(205, 90, 185, 30);
 		loadGame.setBorder(border2);
+		loadGame.addActionListener(listen);
+		loadGame.setActionCommand("loadGame");
 		bodyPanel.add(loadGame);
 		
-		JButton options = new JButton("OPTIONS");
+		options = new JButton("OPTIONS");
 		options.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		options.setBackground(Color.GREEN);
+		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		options.setBackground(Color.BLACK);
 		options.setForeground(Color.WHITE);
-		options.setBounds(215, 160, 136, 30);
+		options.setBounds(215, 160, 138, 30);
 		options.setBorder(border3);
+		options.addActionListener(listen);
+		options.setActionCommand("options");
 		bodyPanel.add(options);
 		
-		JButton exit = new JButton("EXIT");
+		exit = new JButton("EXIT");
 		exit.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		exit.setBackground(Color.GREEN);
+		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		exit.setBackground(Color.BLACK);
 		exit.setForeground(Color.WHITE);
-		exit.setBounds(255, 230, 70, 30);
+		exit.setBounds(255, 230, 71, 30);
 		exit.setBorder(border4);
+		exit.addActionListener(listen);
+		exit.setActionCommand("exit");
 		bodyPanel.add(exit);
 		
-
 	}
+	
 	
 	/*public MainMenu(Subject Character){//recieves reference to subject
 		this.Character = Character;
@@ -212,6 +249,83 @@ class MainMenu extends JPanel implements Observer, DisplayElement{
 	public void display(){
 		//code for updating display
 		
+	}
+	/*
+	@Override
+	public void keyTyped(KeyEvent e){
+		System.out.println(e.getKeyCode());
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_UP:
+			System.out.println("up typed.");
+			if(button == 0)
+				button = 3;
+			else 
+				button--;
+			setButtonFocus();
+		case KeyEvent.VK_DOWN:
+			System.out.println("down typed.");
+			if(button == 3)
+				button = 0;
+			else 
+				button++;
+			setButtonFocus();
+		case KeyEvent.VK_ENTER:
+			System.out.println("enter typed.");
+			//(getButtonFocus()).doClick();
+			getButtonFocus().setBackground(Color.GREEN);
+		}
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e){
+
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e){
+		
+	}
+	
+	public void setButtonFocus(){
+		switch(button){
+		case 0:
+			newGame.requestFocus();
+		case 1:
+			loadGame.requestFocus();
+		case 2:
+			options.requestFocus();
+		case 3:
+			exit.requestFocus();
+		}
+	}
+	
+	public JButton getButtonFocus(){
+		switch(button){
+		case 0:
+			return newGame;
+		case 1:
+			return loadGame;
+		case 2:
+			return options;
+		case 3:
+			return exit;
+		default:
+			return newGame;
+		}
+	}*/
+	
+	public class MainMenuListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			if (event.getActionCommand().equals("newGame")) 
+				sim.newGame();
+			else if (event.getActionCommand().equals("loadGame"))
+				sim.loadGame();			
+			else if (event.getActionCommand().equals("options"))
+				sim.options();
+			else if (event.getActionCommand().equals("exit")) 
+				sim.exit();	
+		}
 	}
 		
 }
