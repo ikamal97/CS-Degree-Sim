@@ -156,43 +156,43 @@ class MainMenu extends JPanel implements Observer, DisplayElement{
 		headerPanel.add(headerLabel);
 		
 		JPanel bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.BLUE);
+		bodyPanel.setBackground(Color.BLACK);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
 		
 		JButton newGame = new JButton("NEW GAME");
 		newGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-		newGame.setBackground(Color.GREEN);
+		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
+		newGame.setBackground(Color.BLACK);
 		newGame.setForeground(Color.WHITE);
-		newGame.setBounds(210, 20, 170, 30);
+		newGame.setBounds(210, 20, 172, 30);
 		newGame.setBorder(border);
 		bodyPanel.add(newGame);
 		
 		JButton loadGame = new JButton("LOAD GAME");
 		loadGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		loadGame.setBackground(Color.GREEN);
+		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		loadGame.setBackground(Color.BLACK);
 		loadGame.setForeground(Color.WHITE);
-		loadGame.setBounds(205, 90, 183, 30);
+		loadGame.setBounds(205, 90, 185, 30);
 		loadGame.setBorder(border2);
 		bodyPanel.add(loadGame);
 		
 		JButton options = new JButton("OPTIONS");
 		options.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		options.setBackground(Color.GREEN);
+		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		options.setBackground(Color.BLACK);
 		options.setForeground(Color.WHITE);
-		options.setBounds(215, 160, 136, 30);
+		options.setBounds(215, 160, 138, 30);
 		options.setBorder(border3);
 		bodyPanel.add(options);
 		
 		JButton exit = new JButton("EXIT");
 		exit.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 1);
-		exit.setBackground(Color.GREEN);
+		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
+		exit.setBackground(Color.BLACK);
 		exit.setForeground(Color.WHITE);
-		exit.setBounds(255, 230, 70, 30);
+		exit.setBounds(255, 230, 71, 30);
 		exit.setBorder(border4);
 		bodyPanel.add(exit);
 		
