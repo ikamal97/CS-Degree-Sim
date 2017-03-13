@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Character implements Subject {
 
-	int morale, energy;
+	private int morale, energy;
 	private ArrayList<Observer> observers;
 	
 	public Character(){
@@ -26,8 +26,23 @@ public class Character implements Subject {
 		}
 	}
 	
-	public void statsChanged(){
+	public int getMorale(){
+		return morale;
+	}
+	
+	public int getEnergy(){
+		return energy;
+	}
+	
+	public void setMorale(int damage){
+		morale -= damage;
 		notifyObservers();
 	}
+	
+	public void setEnergy(int damage){
+		energy -= damage;
+		notifyObservers();
+	}
+	
 
 }
