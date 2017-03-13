@@ -3,14 +3,17 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class csDegreeSim{
 	public static int Height = 400;
 	public static int Width = 600;
-	JPanel panel;
-	JMenuBar mainMenu;
+	public JPanel panel;
+	public JMenuBar mainMenu;
 	public JFrame frame;
+	public Game gameSystem;
 	
 	public static void main(String[] args){
 		csDegreeSim CSDegreeSimulator = new csDegreeSim();
@@ -36,6 +39,7 @@ public class csDegreeSim{
 		
 	public void startGame(){
 		setPanel(new MainMenu(this));
+		gameSystem = new Game();
 	}
 	
 	public void newGame(){
@@ -57,9 +61,10 @@ public class csDegreeSim{
 		System.exit(0);
 	}
 	
-	public void startDay(){
+	public void startDay(){	
 		System.out.println("Start Game selected");
 		setPanel(new DayMenu(this));
+		gameSystem.startDay();
 	}
 	
 	public JFrame getJFrame(){

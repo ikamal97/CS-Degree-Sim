@@ -1,9 +1,15 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+//import javax.swing.Timer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Game implements Subject {
-
-private ArrayList<Observer> observers;
+	private EventTimer eventTimer;
+	private Timer timer;
+	private ArrayList<Observer> observers;
 	
 	public Game(){
 		observers = new ArrayList<Observer>();
@@ -20,6 +26,34 @@ private ArrayList<Observer> observers;
 	}
 	
 	public void notifyObservers(){
+				
+	}
+	
+	public void startDay(){
+		System.out.println("Day is starting");
+		eventTimer = new EventTimer();
+	}
+	
+	public class EventTimer{
+	    Timer timer;
+	    int seconds = 5;
+	    
+	    public EventTimer() {
+	        timer = new Timer();
+	        timer.schedule(new EventTimerTask(), 0, 2*1000);
+	    }
+	    
+	    class EventTimerTask extends TimerTask{
+	    	public void run() {
+	    		System.out.println("second: " + seconds);
+	    		seconds--;
+	    		if(seconds == 0){
+	    			timer.cancel();
+	    			return;
+	    		}
+	    	}
+	    }
+		
 		
 	}
 	
