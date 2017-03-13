@@ -48,6 +48,7 @@ public class Game implements Subject {
 	    class EventTimerTask extends TimerTask{
 	    	public void run() {
 	    		System.out.println("second: " + seconds);
+	    		eventSelector();
 	    		seconds--;
 	    		if(seconds == 0){
 	    			timer.cancel();
@@ -66,8 +67,48 @@ public class Game implements Subject {
 	}
 	
 	
+	public Event chooseEventType(int randomNumber){
+		if(randomNumber >=0 && randomNumber <= 50){
+			System.out.println("Good Event");
+			GoodEvent goodEvent = new GoodEvent();
+			return goodEvent;
+		}
+		else if(randomNumber > 50 && randomNumber <= 100){
+		    System.out.println("Bad Event");
+		    BadEvent badEvent = new BadEvent();
+		    return badEvent;
+		     
+		}
+	    
+	  return null;
+	}
 	
+	public void eventSelector(){
+		int randomNumber = randomNumberGenerator();
+		
+		Event event = chooseEventType(randomNumber);
+		
+	}
+
 	public abstract class Event{
+	
+	
+	   
+	}
+	
+	public class GoodEvent extends Event{
+
+		public GoodEvent() {
+			
+			// TODO Auto-generated constructor stub
+		}
+		
+	}
+	public class BadEvent extends Event{
+
+		public BadEvent() {
+			
+		}
 		
 	}
 	
