@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Character implements Subject {
 
-	int characterStats;
+	int morale, energy;
 	private ArrayList<Observer> observers;
 	
 	public Character(){
@@ -22,7 +22,7 @@ public class Character implements Subject {
 	//notify all observers that character stats changed and to update
 	public void notifyObservers(){
 		for(Observer observer : observers){
-			observer.update(characterStats);
+			observer.update(morale, energy);
 		}
 	}
 	
