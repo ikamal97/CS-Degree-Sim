@@ -1,4 +1,5 @@
 
 public interface DisplayMenu {
-	public void display();
+	public void createPanels();
+	public void createButtons();
 }

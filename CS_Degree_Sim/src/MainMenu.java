@@ -4,7 +4,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainMenu extends JPanel implements Observer {
+public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 
 	private int screenStats;
 	private Subject Character;
@@ -17,6 +17,17 @@ public class MainMenu extends JPanel implements Observer {
 	
 	public MainMenu(csDegreeSim sim){
 		this.sim = sim;
+		
+		createPanels();
+		
+		listen = new MainMenuListener();
+		//addKeyListener(this);
+		
+		createButtons();
+		
+	}
+	
+	public void createPanels(){
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
@@ -32,12 +43,6 @@ public class MainMenu extends JPanel implements Observer {
 		bodyPanel.setBackground(Color.BLACK);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
-		
-		listen = new MainMenuListener();
-		//addKeyListener(this);
-		
-		createButtons();
-		
 	}
 
 	public void createButtons(){
@@ -46,11 +51,10 @@ public class MainMenu extends JPanel implements Observer {
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		newGame.setBackground(Color.BLACK);
 		newGame.setForeground(Color.WHITE);
-		newGame.setBounds(210, 20, 172, 30);
+		newGame.setBounds(210, 20, 200, 30);
 		newGame.setBorder(border);
 		newGame.addActionListener(listen);
-		newGame.setActionCommand("newGame");
-		//newGame.requestFocus();	
+		newGame.setActionCommand("newGame");	
 		bodyPanel.add(newGame);
 		
 		loadGame = new JButton("LOAD GAME");
@@ -94,15 +98,14 @@ public class MainMenu extends JPanel implements Observer {
 		Character.registerObserver(this);//registers this observer with subject
 	}*/
 	
-	public void update(int stats){
+	public void update(int stats, int energy){
 		this.screenStats = stats;
-		display();
+		//display();
 	}
 	
-	public void display(){
-		//code for updating display
-		
-	}
+	//public void display(){
+		//code for updating display	
+	//}
 	
 	public class MainMenuListener implements ActionListener {
 		@Override

@@ -7,9 +7,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game implements Subject {
+	private Character player;
 	private EventTimer eventTimer;
 	private Timer timer;
 	private ArrayList<Observer> observers;
+	
 	
 	public Game(){
 		observers = new ArrayList<Observer>();
@@ -40,7 +42,7 @@ public class Game implements Subject {
 	    
 	    public EventTimer() {
 	        timer = new Timer();
-	        timer.schedule(new EventTimerTask(), 0, 2*1000);
+	        timer.schedule(new EventTimerTask(), 0, 1*1000);
 	    }
 	    
 	    class EventTimerTask extends TimerTask{
@@ -63,8 +65,11 @@ public class Game implements Subject {
 		return randomNumber;
 	}
 	
+	
+	
 	public abstract class Event{
 		
 	}
+	
 
 }

@@ -1,12 +1,19 @@
 import java.util.ArrayList;
 
 public class Character implements Subject {
-
+	private String name;
 	private int morale, energy;
+	private int intelligence, endurance, charisma;
 	private ArrayList<Observer> observers;
 	
 	public Character(){
 		observers = new ArrayList<Observer>();
+		name = "New Character";
+		morale = 50;
+		energy = 15;
+		intelligence = 5;
+		endurance = 5;
+		charisma = 5;
 	}
 	
 	public void registerObserver(Observer o){
