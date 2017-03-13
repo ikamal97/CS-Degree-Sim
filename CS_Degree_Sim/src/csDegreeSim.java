@@ -16,7 +16,7 @@ public class csDegreeSim{
 	public Game gameSystem;
 	
 	public static void main(String[] args){
-		csDegreeSim CSDegreeSimulator = new csDegreeSim();
+		final csDegreeSim CSDegreeSimulator = new csDegreeSim();
 		SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
