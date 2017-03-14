@@ -7,10 +7,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game implements Subject {
+	private Character player;
 	private EventTimer eventTimer;
 	private Timer timer;
-	private Character mainCharacter;
 	private ArrayList<Observer> observers;
+	
 	
 	public Game(){
 		observers = new ArrayList<Observer>();
@@ -41,12 +42,13 @@ public class Game implements Subject {
 	    
 	    public EventTimer() {
 	        timer = new Timer();
-	        timer.schedule(new EventTimerTask(), 0, 2*1000);
+	        timer.schedule(new EventTimerTask(), 0, 1*1000);
 	    }
 	    
 	    class EventTimerTask extends TimerTask{
 	    	public void run() {
 	    		System.out.println("second: " + seconds);
+	    		eventSelector();
 	    		seconds--;
 	    		if(seconds == 0){
 	    			timer.cancel();
@@ -64,8 +66,51 @@ public class Game implements Subject {
 		return randomNumber;
 	}
 	
-	public abstract class Event{
+	
+	public Event chooseEventType(int randomNumber){
+		if(randomNumber >=0 && randomNumber <= 50){
+			System.out.println("Good Event");
+			GoodEvent goodEvent = new GoodEvent();
+			return goodEvent;
+		}
+		else if(randomNumber > 50 && randomNumber <= 100){
+		    System.out.println("Bad Event");
+		    BadEvent badEvent = new BadEvent();
+		    return badEvent;
+		     
+		}
+	    
+	  return null;
+	}
+	
+	public void eventSelector(){
+		int randomNumber = randomNumberGenerator();
+		
+		Event event = chooseEventType(randomNumber);
 		
 	}
+
+	public abstract class Event{
+	
+	
+	   
+	}
+	
+	public class GoodEvent extends Event{
+
+		public GoodEvent() {
+			
+			// TODO Auto-generated constructor stub
+		}
+		
+	}
+	public class BadEvent extends Event{
+
+		public BadEvent() {
+			
+		}
+		
+	}
+	
 
 }

@@ -4,7 +4,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
-public class DayMenu extends JPanel implements Observer {
+public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 	private int screenStats;
 	private Subject Character;
@@ -19,6 +19,16 @@ public class DayMenu extends JPanel implements Observer {
 	
 	public DayMenu(csDegreeSim sim){
 		this.sim = sim;
+		
+		createPanels();
+		
+		listen = new DayMenuListener();
+		
+		createComponents();
+		
+	}
+	
+	public void createPanels(){
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
@@ -34,13 +44,9 @@ public class DayMenu extends JPanel implements Observer {
 		bodyPanel.setBackground(Color.ORANGE);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
-		
-		listen = new DayMenuListener();
-		
-		createButtons();
 	}
 	
-	public void createButtons(){
+	public void createComponents(){
 		quit = new JButton("QUIT");
 		quit.setFont(new Font("Dialog", Font.BOLD, 30));
 		Border border = BorderFactory.createLineBorder(Color.GRAY, 2);
@@ -54,15 +60,30 @@ public class DayMenu extends JPanel implements Observer {
 		bodyPanel.add(quit);
 	}
 	
-	public void update(int stats){
-		this.screenStats = stats;
-		display();
+	/*public MainMenu(Subject Character){//recieves reference to subject
+		this.Character = Character;
+		Character.registerObserver(this);//registers this observer with subject
+	}*/
+	
+	
+	public void updateStats(int moral, int energy){
+		this.moral = moral;
+		this.energy = energy;
+		//display();
 	}
 	
-	public void display(){
-		//code for updating display
+	public void updateTraits(int intelligence, int endurance, int charisma){
 		
+		//display();
 	}
+	
+	public void updateTimer(int time){
+		//display();
+	}
+	
+	//public void display(){
+		//code for updating display
+	//}
 	
 	public class DayMenuListener implements ActionListener {
 		@Override

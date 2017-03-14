@@ -54,12 +54,12 @@ public class Character implements Subject {
 		return charisma;
 	}
 	
-	public void damageMorale(int damage){
+	public void setMorale(int damage){
 		morale -= damage;
 		notifyObservers();
 	}
 	
-	public void damageEnergy(int damage){
+	public void setEnergy(int damage){
 		energy -= damage;
 		notifyObservers();
 	}
@@ -67,6 +67,12 @@ public class Character implements Subject {
 	public void setIntelligence(int value){
 		intelligence += value;
 		System.out.println(intelligence);
+		notifyObservers();
+	}
+	
+	public void setEndurance(int value){
+		endurance += value;
+		System.out.println(endurance);
 		notifyObservers();
 	}
 	
