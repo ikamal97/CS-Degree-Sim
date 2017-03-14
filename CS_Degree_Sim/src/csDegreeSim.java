@@ -46,12 +46,12 @@ public class csDegreeSim{
 		
 	public void startGame(){
 		setPanel(new MainMenu(this));
-		gameSystem = new Game();
 	}
 	
 	public void newGame(){
 		System.out.println("New Game selected");
 		playerCharacter = new Character();
+		gameSystem = new Game(playerCharacter);
 		setPanel(new NewGameMenu(this, playerCharacter));
 	}
 	

@@ -26,6 +26,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		character.registerObserver(this);
 		game.registerObserver(this);
 		
+		character.resetDailyEnergy();
 		initialCharacterInfo(character.getMorale(), character.getEnergy());
 		
 		createPanels();

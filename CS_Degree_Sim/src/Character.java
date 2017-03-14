@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Character implements Subject {
 	private String name;
-	private int morale, energy;
+	private int morale, energy, maxEnergy;
 	private int intelligence, endurance, charisma;
 	private ArrayList<Observer> observers;
 	
@@ -10,7 +10,8 @@ public class Character implements Subject {
 		observers = new ArrayList<Observer>();
 		name = "New Character";
 		morale = 100;
-		energy = 100;
+		maxEnergy = 20;
+		energy = 20;
 		intelligence = 5;
 		endurance = 5;
 		charisma = 5;
@@ -40,6 +41,10 @@ public class Character implements Subject {
 	
 	public int getEnergy(){
 		return energy;
+	}
+	
+	public int getMaxEnergy(){
+		return maxEnergy;
 	}
 	
 	public int getInt(){
@@ -84,6 +89,16 @@ public class Character implements Subject {
 		endurance += value;
 		System.out.println(endurance);
 		notifyObservers();
+	}
+	
+	public void setCharisma(int value){
+		charisma += value;
+		System.out.println(charisma);
+		notifyObservers();
+	}
+	
+	public void resetDailyEnergy(){
+		energy = maxEnergy;
 	}
 	
 

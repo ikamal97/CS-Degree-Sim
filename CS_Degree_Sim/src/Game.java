@@ -7,14 +7,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game implements Subject {
-	private Character player;
+	private Character character;
 	public EventTimer eventTimer;
 	private Timer timer;
 	//public int seconds;
 	private ArrayList<Observer> observers;
 	
 	
-	public Game(){
+	public Game(Character character){
+		this.character = character;
 		observers = new ArrayList<Observer>();
 	}
 	
@@ -34,6 +35,11 @@ public class Game implements Subject {
 		}	
 	}
 	
+	public void depleteEnergy(){
+		if(character.getEnergy() > 0)
+			character.damageEnergy(1);
+	}
+	
 	public void startDay(){
 		System.out.println("Day is starting");
 		eventTimer = new EventTimer();
@@ -45,17 +51,22 @@ public class Game implements Subject {
 	
 	public class EventTimer{
 	    //Timer timer;
-	    int seconds = 0;
+	    int seconds = 1;
 	    
 	    public EventTimer() {
 	        timer = new Timer();
 	        timer.schedule(new EventTimerTask(), 0, 1*1000);
 	    }
 	    
+	    public int getSeconds(){
+	    	return seconds;
+	    }
+	    
 	    class EventTimerTask extends TimerTask{
 	    	public void run() {
 	    		System.out.println("second: " + seconds);
 	    		notifyObservers();
+	    		depleteEnergy();
 	    		eventSelector();
 	    		seconds++;
 	    		if(seconds == 11){

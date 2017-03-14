@@ -16,6 +16,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	private JLabel headerLabel, moralLabel, energyLabel, nameLabel;
 	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
 	private JButton startGame, minusINT, plusINT, minusEND, plusEND;
+	private JButton minusCHR, plusCHR;
 	private NewGameMenuListener listen;
 	
 	
@@ -110,6 +111,28 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		plusEND.setActionCommand("+END");	
 		bodyPanel.add(plusEND);
 		
+		minusCHR = new JButton("-CHR");
+		minusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
+		Border border6 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		minusCHR.setBackground(Color.GRAY);
+		minusCHR.setForeground(Color.BLACK);
+		minusCHR.setBounds(200, 170, 46, 20);
+		minusCHR.setBorder(border6);
+		minusCHR.addActionListener(listen);
+		minusCHR.setActionCommand("-CHR");	
+		bodyPanel.add(minusCHR);
+		
+		plusCHR = new JButton("+CHR");
+		plusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
+		Border border7 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		plusCHR.setBackground(Color.GRAY);
+		plusCHR.setForeground(Color.BLACK);
+		plusCHR.setBounds(250, 170, 52, 20);
+		plusCHR.setBorder(border7);
+		plusCHR.addActionListener(listen);
+		plusCHR.setActionCommand("+CHR");	
+		bodyPanel.add(plusCHR);
+		
 		nameLabel = new JLabel("Player Name: ");
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		nameLabel.setForeground(Color.WHITE);
@@ -175,6 +198,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		this.intelligenceLabel.setText("INT: " + intelligence);
 		this.enduranceLabel.setText("END: " + endurance);
+		this.charismaLabel.setText("CHR: " + charisma);
 	}
 	
 	public void updateTimer(int time){
@@ -198,6 +222,10 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 				character.setEndurance(-1);
 			if (event.getActionCommand().equals("+END"))
 				character.setEndurance(1);
+			if (event.getActionCommand().equals("-CHR"))
+				character.setCharisma(-1);
+			if (event.getActionCommand().equals("+CHR"))
+				character.setCharisma(1);
 		}
 	}
 

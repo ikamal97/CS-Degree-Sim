@@ -14,7 +14,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	private JPanel bodyPanel, headerPanel;
 	private JLabel headerLabel, timerLabel, moralLabel, energyLabel, nameLabel;
 	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
-	private JButton startGame, minusINT, plusINT, minusEND, plusEND;
+	private JButton startGame, plusINT, plusEND, plusCHR;
 	private JButton quit, nextDay;
 	private NightMenuListener listen;
 	
@@ -67,27 +67,38 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		nextDay.setActionCommand("nextDay");	
 		bodyPanel.add(nextDay);
 		
-		plusINT = new JButton("+INT");
+		plusINT = new JButton("STUDY: +INT(5 Energy)");
 		plusINT.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusINT.setBackground(Color.GRAY);
 		plusINT.setForeground(Color.BLACK);
-		plusINT.setBounds(250, 110, 52, 20);
+		plusINT.setBounds(250, 110, 200, 20);
 		plusINT.setBorder(border2);
 		plusINT.addActionListener(listen);
 		plusINT.setActionCommand("+INT");	
 		bodyPanel.add(plusINT);
 		
-		plusEND = new JButton("+END");
+		plusEND = new JButton("LIFT: +END(8 Energy)");
 		plusEND.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusEND.setBackground(Color.GRAY);
 		plusEND.setForeground(Color.BLACK);
-		plusEND.setBounds(250, 140, 52, 20);
+		plusEND.setBounds(250, 140, 200, 20);
 		plusEND.setBorder(border3);
 		plusEND.addActionListener(listen);
 		plusEND.setActionCommand("+END");	
 		bodyPanel.add(plusEND);
+		
+		plusCHR = new JButton("DRINK: +CHR(4 Energy)");
+		plusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
+		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		plusCHR.setBackground(Color.GRAY);
+		plusCHR.setForeground(Color.BLACK);
+		plusCHR.setBounds(250, 170, 200, 20);
+		plusCHR.setBorder(border4);
+		plusCHR.addActionListener(listen);
+		plusCHR.setActionCommand("+CHR");	
+		bodyPanel.add(plusCHR);
 		
 		nameLabel = new JLabel("Player Name: ");
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -137,7 +148,8 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	public void updateStats(int moral, int energy){
 		this.moral = moral;
 		this.energy = energy;
-		//display();
+		
+		this.energyLabel.setText("Energy: " + energy);
 	}
 	
 	public void updateTraits(int intelligence, int endurance, int charisma){
@@ -147,12 +159,34 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		
 		this.intelligenceLabel.setText("INT: " + intelligence);
 		this.enduranceLabel.setText("END: " + endurance);
+		this.charismaLabel.setText("CHR: " + charisma);
 	}
 
 	@Override
 	public void updateTimer(int time) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void increaseINT(){
+		if(energy >= 5){
+			character.setIntelligence(1);
+			character.damageEnergy(5);
+		}
+	}
+	
+	public void increaseEND(){
+		if(energy >= 5){
+			character.setEndurance(1);
+			character.damageEnergy(8);
+		}
+	}
+	
+	public void increaseCHR(){
+		if(energy >= 5){
+			character.setCharisma(1);
+			character.damageEnergy(4);
+		}
 	}
 
 	public class NightMenuListener implements ActionListener {
@@ -161,9 +195,11 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 			if (event.getActionCommand().equals("nextDay")) 
 				sim.startDay();
 			if (event.getActionCommand().equals("+INT"))
-				character.setIntelligence(1);
+				increaseINT();
 			if (event.getActionCommand().equals("+END"))
-				character.setEndurance(1);
+				increaseEND();
+			if (event.getActionCommand().equals("+CHR"))
+				increaseCHR();
 		}
 	}
 
