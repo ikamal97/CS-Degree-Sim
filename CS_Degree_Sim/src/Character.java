@@ -9,8 +9,8 @@ public class Character implements Subject {
 	public Character(){
 		observers = new ArrayList<Observer>();
 		name = "New Character";
-		morale = 50;
-		energy = 15;
+		morale = 100;
+		energy = 100;
 		intelligence = 5;
 		endurance = 5;
 		charisma = 5;
@@ -41,12 +41,12 @@ public class Character implements Subject {
 		return energy;
 	}
 	
-	public void setMorale(int damage){
+	public void damageMorale(int damage){
 		morale -= damage;
 		notifyObservers();
 	}
 	
-	public void setEnergy(int damage){
+	public void damageEnergy(int damage){
 		energy -= damage;
 		notifyObservers();
 	}
