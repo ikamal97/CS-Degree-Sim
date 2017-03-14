@@ -8,8 +8,9 @@ import java.util.TimerTask;
 
 public class Game implements Subject {
 	private Character player;
-	private EventTimer eventTimer;
+	public EventTimer eventTimer;
 	private Timer timer;
+	//public int seconds;
 	private ArrayList<Observer> observers;
 	
 	
@@ -28,7 +29,9 @@ public class Game implements Subject {
 	}
 	
 	public void notifyObservers(){
-				
+		for(Observer observer : observers){
+			observer.updateTimer(eventTimer.seconds);
+		}	
 	}
 	
 	public void startDay(){
@@ -36,9 +39,13 @@ public class Game implements Subject {
 		eventTimer = new EventTimer();
 	}
 	
+	public void stopTimer(){
+		timer.cancel();
+	}
+	
 	public class EventTimer{
-	    Timer timer;
-	    int seconds = 5;
+	    //Timer timer;
+	    int seconds = 0;
 	    
 	    public EventTimer() {
 	        timer = new Timer();
@@ -48,16 +55,15 @@ public class Game implements Subject {
 	    class EventTimerTask extends TimerTask{
 	    	public void run() {
 	    		System.out.println("second: " + seconds);
+	    		notifyObservers();
 	    		eventSelector();
-	    		seconds--;
-	    		if(seconds == 0){
+	    		seconds++;
+	    		if(seconds == 11){
 	    			timer.cancel();
 	    			return;
 	    		}
 	    	}
-	    }
-		
-		
+	    }	
 	}
 	
 	public int randomNumberGenerator(){

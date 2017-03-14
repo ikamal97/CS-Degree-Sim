@@ -154,11 +154,6 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 	}
 	
-	/*public MainMenu(Subject Character){//recieves reference to subject
-	this.Character = Character;
-	Character.registerObserver(this);//registers this observer with subject
-	}*/
-	
 	public void initialCharacterInfo(int moral, int energy, int intelligence, int endurance, int charisma){
 		this.moral = moral;
 		this.energy = energy;

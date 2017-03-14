@@ -54,6 +54,16 @@ public class Character implements Subject {
 		return charisma;
 	}
 	
+	public void increaseMorale(int increase){
+		morale += increase;
+		notifyObservers();
+	}
+	
+	public void increaseEnergy(int increase){
+		energy += increase;
+		notifyObservers();
+	}
+	
 	public void damageMorale(int damage){
 		morale -= damage;
 		notifyObservers();

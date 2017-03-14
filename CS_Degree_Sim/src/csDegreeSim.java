@@ -70,9 +70,14 @@ public class csDegreeSim{
 	}
 	
 	public void startDay(){	
-		System.out.println("Start Game selected");
-		setPanel(new DayMenu(this));
+		System.out.println("New Day selected");
+		setPanel(new DayMenu(this, gameSystem, playerCharacter));
 		gameSystem.startDay();
+	}
+	
+	public void endDay(){
+		System.out.println("End Day selected");
+		setPanel(new NightMenu(this, gameSystem, playerCharacter));
 	}
 	
 	public JFrame getJFrame(){
