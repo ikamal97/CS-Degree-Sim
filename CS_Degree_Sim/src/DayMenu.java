@@ -8,6 +8,7 @@ public class DayMenu extends JPanel implements Observer {
 
 	private int screenStats;
 	private Subject Character;
+	private int moral, energy, time;
 	private csDegreeSim sim;
 	private int button = 0;
 	private JPanel bodyPanel, headerPanel;

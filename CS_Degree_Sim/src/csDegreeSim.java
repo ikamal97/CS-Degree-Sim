@@ -11,9 +11,13 @@ public class csDegreeSim{
 	public static int Height = 400;
 	public static int Width = 600;
 	public JPanel panel;
-	public JMenuBar mainMenu;
 	public JFrame frame;
 	public Game gameSystem;
+	public Character playerCharacter;
+	public MainMenu mainMenu;
+	public NewGameMenu newGameMenu;
+	public DayMenu dayMenu;
+	
 	
 	public static void main(String[] args){
 		final csDegreeSim CSDegreeSimulator = new csDegreeSim();
@@ -30,11 +34,14 @@ public class csDegreeSim{
 		frame = new JFrame();
 		frame.setTitle("CS Degree Simulator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setSize(new Dimension(Width, Height));
 		frame.setLocation(200, 200);
+		
+		//mainMenu = new MainMenu(this);
+		//dayMenu = new DayMenu(this);
+		//newGameMenu = new NewGameMenu(this);
 	}
 		
 	public void startGame(){
@@ -44,7 +51,8 @@ public class csDegreeSim{
 	
 	public void newGame(){
 		System.out.println("New Game selected");
-		setPanel(new NewGameMenu(this));
+		playerCharacter = new Character();
+		setPanel(new NewGameMenu(this, playerCharacter));
 	}
 	
 	public void loadGame(){

@@ -98,8 +98,17 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		Character.registerObserver(this);//registers this observer with subject
 	}*/
 	
-	public void update(int stats, int energy){
+	public void updateStats(int stats, int energy){
 		this.screenStats = stats;
+		//display();
+	}
+	
+	public void updateTraits(int intelligence, int endurance, int charisma){
+		
+		//display();
+	}
+	
+	public void updateTimer(int time){
 		//display();
 	}
 	
