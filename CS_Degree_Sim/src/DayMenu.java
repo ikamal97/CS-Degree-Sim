@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class DayMenu extends JPanel implements Observer {
 
-	private int screenStats;
+	//private int screenStats;
 	private Subject Character;
 	private int moral, energy, time;
 	private csDegreeSim sim;
@@ -54,11 +54,6 @@ public class DayMenu extends JPanel implements Observer {
 		bodyPanel.add(quit);
 	}
 	
-	public void update(int stats){
-		this.screenStats = stats;
-		display();
-	}
-	
 	public void display(){
 		//code for updating display
 		
@@ -70,6 +65,24 @@ public class DayMenu extends JPanel implements Observer {
 			if (event.getActionCommand().equals("quit")) 
 				sim.startGame();
 		}
+	}
+
+	@Override
+	public void updateStats(int morale, int energy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTraits(int intelligence, int endurance, int charisma) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTimer(int time) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

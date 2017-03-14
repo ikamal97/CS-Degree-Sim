@@ -17,7 +17,6 @@ public class CharacterTest {
 		Character character = new Character();
 		character.damageEnergy(10);
 		assertEquals(90, character.getEnergy());
-		
 	}
 
 }
