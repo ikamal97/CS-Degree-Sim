@@ -11,7 +11,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 	private csDegreeSim sim;
 	private int button = 0;
 	private JPanel bodyPanel, headerPanel;
-	private JLabel headerLabel;
+	private JLabel headerLabel, titleLabel;
 	private JButton newGame, loadGame, options, exit;
 	private MainMenuListener listen;
 	
@@ -23,7 +23,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		listen = new MainMenuListener();
 		//addKeyListener(this);
 		
-		createButtons();
+		createComponents();
 		
 	}
 	
@@ -45,13 +45,20 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		bodyPanel.setLayout(null);
 	}
 
-	public void createButtons(){
+	public void createComponents(){
+		
+		titleLabel = new JLabel("CS DEGREE SIMULATOR");
+		titleLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+		titleLabel.setForeground(Color.WHITE);
+		titleLabel.setBounds(100, 20, 500, 30);
+		bodyPanel.add(titleLabel);
+		
 		newGame = new JButton("NEW GAME");
 		newGame.setFont(new Font("Dialog", Font.BOLD, 30));
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		newGame.setBackground(Color.BLACK);
 		newGame.setForeground(Color.WHITE);
-		newGame.setBounds(210, 20, 200, 30);
+		newGame.setBounds(210, 90, 200, 30);
 		newGame.setBorder(border);
 		newGame.addActionListener(listen);
 		newGame.setActionCommand("newGame");	
@@ -62,7 +69,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		loadGame.setBackground(Color.BLACK);
 		loadGame.setForeground(Color.WHITE);
-		loadGame.setBounds(205, 90, 185, 30);
+		loadGame.setBounds(205, 160, 220, 30);
 		loadGame.setBorder(border2);
 		loadGame.addActionListener(listen);
 		loadGame.setActionCommand("loadGame");
@@ -73,7 +80,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		options.setBackground(Color.BLACK);
 		options.setForeground(Color.WHITE);
-		options.setBounds(215, 160, 138, 30);
+		options.setBounds(215, 230, 200, 30);
 		options.setBorder(border3);
 		options.addActionListener(listen);
 		options.setActionCommand("options");
@@ -84,7 +91,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		exit.setBackground(Color.BLACK);
 		exit.setForeground(Color.WHITE);
-		exit.setBounds(255, 230, 71, 30);
+		exit.setBounds(255, 300, 110, 30);
 		exit.setBorder(border4);
 		exit.addActionListener(listen);
 		exit.setActionCommand("exit");
