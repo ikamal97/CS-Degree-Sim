@@ -54,12 +54,12 @@ public class Character implements Subject {
 		return charisma;
 	}
 	
-	public void setMorale(int damage){
+	public void damageMorale(int damage){
 		morale -= damage;
 		notifyObservers();
 	}
 	
-	public void setEnergy(int damage){
+	public void damageEnergy(int damage){
 		energy -= damage;
 		notifyObservers();
 	}
