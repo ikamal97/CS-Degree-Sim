@@ -8,6 +8,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 	private int screenStats;
 	private Subject Character;
+	private int moral, energy, time;
 	private csDegreeSim sim;
 	private int button = 0;
 	private JPanel bodyPanel, headerPanel;
@@ -59,8 +60,24 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		bodyPanel.add(quit);
 	}
 	
-	public void update(int stats, int energy){
-		this.screenStats = stats;
+	/*public MainMenu(Subject Character){//recieves reference to subject
+		this.Character = Character;
+		Character.registerObserver(this);//registers this observer with subject
+	}*/
+	
+	
+	public void updateStats(int moral, int energy){
+		this.moral = moral;
+		this.energy = energy;
+		//display();
+	}
+	
+	public void updateTraits(int intelligence, int endurance, int charisma){
+		
+		//display();
+	}
+	
+	public void updateTimer(int time){
 		//display();
 	}
 	

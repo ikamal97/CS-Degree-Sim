@@ -29,7 +29,8 @@ public class Character implements Subject {
 	//notify all observers that character stats changed and to update
 	public void notifyObservers(){
 		for(Observer observer : observers){
-			observer.update(morale, energy);
+			observer.updateStats(morale, energy);
+			observer.updateTraits(intelligence, endurance, charisma);
 		}
 	}
 	
@@ -41,6 +42,18 @@ public class Character implements Subject {
 		return energy;
 	}
 	
+	public int getInt(){
+		return intelligence;
+	}
+	
+	public int getEnd(){
+		return endurance;
+	}
+	
+	public int getChr(){
+		return charisma;
+	}
+	
 	public void setMorale(int damage){
 		morale -= damage;
 		notifyObservers();
@@ -48,6 +61,12 @@ public class Character implements Subject {
 	
 	public void setEnergy(int damage){
 		energy -= damage;
+		notifyObservers();
+	}
+	
+	public void setIntelligence(int value){
+		intelligence += value;
+		System.out.println(intelligence);
 		notifyObservers();
 	}
 	
