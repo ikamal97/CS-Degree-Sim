@@ -8,8 +8,8 @@ import java.util.TimerTask;
 
 
 public class csDegreeSim{
-	public static int Height = 400;
-	public static int Width = 600;
+	public static int Height = 429;
+	public static int Width = 605;
 	public JPanel panel;
 	public JFrame frame;
 	public Game gameSystem;
