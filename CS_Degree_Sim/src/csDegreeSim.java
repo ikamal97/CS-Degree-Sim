@@ -57,6 +57,8 @@ public class csDegreeSim{
 	
 	public void loadGame(){
 		System.out.println("Load Game selected");
+		setPanel(new DayMenu(this, gameSystem, playerCharacter));
+		gameSystem.startDay();
 	}
 	
 	public void options(){

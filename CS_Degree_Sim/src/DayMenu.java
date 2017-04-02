@@ -11,8 +11,9 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	private csDegreeSim sim;
 	private Game game;
 	private int button = 0;
+	private Image background;
 	private JPanel bodyPanel, headerPanel;
-	private JLabel headerLabel, timerLabel, moralLabel, energyLabel;
+	private JLabel headerLabel, timerLabel, moralLabel, energyLabel, backgroundLabel;
 	private JButton quit, endDay;
 	private DayMenuListener listen;
 	
@@ -38,21 +39,14 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	}
 	
 	public void createPanels(){
-		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
 		
-		headerPanel = new JPanel();
-		headerPanel.setBackground(Color.white);
-		add(headerPanel, BorderLayout.NORTH);
-
-		headerLabel = new JLabel("Day Menu Screen");
-		headerPanel.add(headerLabel);
-		
 		bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.ORANGE);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
+		
+		background = Toolkit.getDefaultToolkit().getImage("images/day_menu_background_600x402.png");
 	}
 	
 	public void createComponents(){
@@ -95,6 +89,10 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		energyLabel.setForeground(Color.WHITE);
 		energyLabel.setBounds(10, 40, 176, 20);
 		bodyPanel.add(energyLabel);
+		
+		backgroundLabel = new JLabel(new ImageIcon(background));
+		backgroundLabel.setBounds(0, 0, 600, 400);
+		bodyPanel.add(backgroundLabel);
 		
 	}
 	

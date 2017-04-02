@@ -8,12 +8,14 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 
 	private Character character;
 	private int moral, energy, intelligence, endurance, charisma;
+	private String characterName;
 	private csDegreeSim sim;
 	private Game game;
 	private int button = 0;
+	private Image background;
 	private JPanel bodyPanel, headerPanel;
 	private JLabel headerLabel, timerLabel, moralLabel, energyLabel, nameLabel;
-	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
+	private JLabel intelligenceLabel, enduranceLabel, charismaLabel, backgroundLabel; 
 	private JButton startGame, plusINT, plusEND, plusCHR;
 	private JButton quit, nextDay;
 	private NightMenuListener listen;
@@ -38,21 +40,14 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	}
 	
 	public void createPanels() {
-		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
 		
-		headerPanel = new JPanel();
-		headerPanel.setBackground(Color.white);
-		add(headerPanel, BorderLayout.NORTH);
-
-		headerLabel = new JLabel("Night Menu Screen");//
-		headerPanel.add(headerLabel);
-		
 		bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.DARK_GRAY);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
+		
+		background = Toolkit.getDefaultToolkit().getImage("images/night_menu_background_600x402.png");
 	}
 
 	public void createComponents() {
@@ -61,7 +56,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 		nextDay.setBackground(Color.GRAY);
 		nextDay.setForeground(Color.BLACK);
-		nextDay.setBounds(210, 300, 300, 30);
+		nextDay.setBounds(50, 340, 300, 30);
 		nextDay.setBorder(border);
 		nextDay.addActionListener(listen);
 		nextDay.setActionCommand("nextDay");	
@@ -72,7 +67,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusINT.setBackground(Color.GRAY);
 		plusINT.setForeground(Color.BLACK);
-		plusINT.setBounds(250, 110, 200, 20);
+		plusINT.setBounds(50, 200, 200, 20);
 		plusINT.setBorder(border2);
 		plusINT.addActionListener(listen);
 		plusINT.setActionCommand("+INT");	
@@ -83,7 +78,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusEND.setBackground(Color.GRAY);
 		plusEND.setForeground(Color.BLACK);
-		plusEND.setBounds(250, 140, 200, 20);
+		plusEND.setBounds(50, 230, 200, 20);
 		plusEND.setBorder(border3);
 		plusEND.addActionListener(listen);
 		plusEND.setActionCommand("+END");	
@@ -94,16 +89,16 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusCHR.setBackground(Color.GRAY);
 		plusCHR.setForeground(Color.BLACK);
-		plusCHR.setBounds(250, 170, 200, 20);
+		plusCHR.setBounds(50, 260, 200, 20);
 		plusCHR.setBorder(border4);
 		plusCHR.addActionListener(listen);
 		plusCHR.setActionCommand("+CHR");	
 		bodyPanel.add(plusCHR);
 		
-		nameLabel = new JLabel("Player Name: ");
+		nameLabel = new JLabel("Player Name: New Player");
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		nameLabel.setForeground(Color.WHITE);
-		nameLabel.setBounds(50, 20, 180, 18);
+		nameLabel.setBounds(50, 20, 300, 22);
 		bodyPanel.add(nameLabel);
 		
 		moralLabel = new JLabel("Moral: " + moral);
@@ -135,6 +130,10 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		charismaLabel.setForeground(Color.WHITE);
 		charismaLabel.setBounds(50, 170, 176, 20);
 		bodyPanel.add(charismaLabel);
+		
+		backgroundLabel = new JLabel(new ImageIcon(background));
+		backgroundLabel.setBounds(0, 0, 600, 400);
+		bodyPanel.add(backgroundLabel);
 	}
 
 	public void initialCharacterInfo(int moral, int energy, int intelligence, int endurance, int charisma){
@@ -176,14 +175,14 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	}
 	
 	public void increaseEND(){
-		if(energy >= 5){
+		if(energy >= 8){
 			character.setEndurance(1);
 			character.damageEnergy(8);
 		}
 	}
 	
 	public void increaseCHR(){
-		if(energy >= 5){
+		if(energy >= 4){
 			character.setCharisma(1);
 			character.damageEnergy(4);
 		}
