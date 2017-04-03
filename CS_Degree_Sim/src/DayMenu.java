@@ -7,13 +7,13 @@ import java.awt.event.*;
 public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 	private Character character;
-	private int moral, energy, time;
+	private int morale, energy, time;
 	private csDegreeSim sim;
 	private Game game;
 	private int button = 0;
 	private Image background, characterSprite;
 	private JPanel bodyPanel, headerPanel;
-	private JLabel headerLabel, timerLabel, moralLabel, energyLabel;
+	private JLabel headerLabel, timerLabel, moraleLabel, energyLabel;
 	private JLabel characterSpriteLabel, backgroundLabel;
 	private JButton quit, endDay;
 	private DayMenuListener listen;
@@ -36,7 +36,6 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		listen = new DayMenuListener();
 		
 		createComponents();
-		
 	}
 	
 	public void createPanels(){
@@ -79,11 +78,11 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		timerLabel.setBounds(500, 10, 176, 18);
 		bodyPanel.add(timerLabel);
 		
-		moralLabel = new JLabel("Moral: " + moral);
-		moralLabel.setFont(new Font("Dialog", Font.BOLD, 18));
-		moralLabel.setForeground(Color.WHITE);
-		moralLabel.setBounds(10, 10, 176, 18);
-		bodyPanel.add(moralLabel);
+		moraleLabel = new JLabel("Morale: " + morale);
+		moraleLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+		moraleLabel.setForeground(Color.WHITE);
+		moraleLabel.setBounds(10, 10, 176, 18);
+		bodyPanel.add(moraleLabel);
 		
 		energyLabel = new JLabel("Energy: " + energy);
 		energyLabel.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -102,16 +101,16 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	}
 	
 	public void initialCharacterInfo(){
-		this.moral = character.getMorale();
+		this.morale = character.getMorale();
 		this.energy = character.getEnergy();
 		this.characterSprite = character.getCharacterSprite();
 	}
 	
-	public void updateStats(int moral, int energy){
-		this.moral = moral;
+	public void updateStats(int morale, int energy){
+		this.morale = morale;
 		this.energy = energy;
 		
-		this.moralLabel.setText("Moral: " + moral);
+		this.moraleLabel.setText("morale: " + morale);
 		this.energyLabel.setText("Energy: " + energy);
 	}
 	
