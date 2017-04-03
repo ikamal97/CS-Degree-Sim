@@ -8,7 +8,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 
 	private int initialCharacterPoints;
 	private Character character;
-	private int moral, energy, intelligence, endurance, charisma; 
+	private int morale, energy, intelligence, endurance, charisma; 
 	private csDegreeSim sim;
 	private int characterPoints = 10;
 	private int spriteNum = 0;
@@ -16,7 +16,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	private Image characterSprite;
 	private Image spriteArray[] = new Image[3];
 	private JTextField playerName;
-	private JLabel headerLabel, moralLabel, energyLabel, nameLabel;
+	private JLabel headerLabel, moraleLabel, energyLabel, nameLabel;
 	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
 	private JLabel characterPointsLabel, characterSpriteLabel;
 	private JButton startGame, minusINT, plusINT, minusEND, plusEND;
@@ -165,11 +165,11 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		bodyPanel.add(playerName);
 		playerName.setColumns(15);
 		
-		moralLabel = new JLabel("Moral: " + moral);
-		moralLabel.setFont(new Font("Dialog", Font.BOLD, 18));
-		moralLabel.setForeground(Color.WHITE);
-		moralLabel.setBounds(50, 50, 176, 18);
-		bodyPanel.add(moralLabel);
+		moraleLabel = new JLabel("Morale: " + morale);
+		moraleLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+		moraleLabel.setForeground(Color.WHITE);
+		moraleLabel.setBounds(50, 50, 176, 18);
+		bodyPanel.add(moraleLabel);
 		
 		energyLabel = new JLabel("Energy: " + energy);
 		energyLabel.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -208,7 +208,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	}
 	
 	public void initialCharacterInfo(){
-		this.moral = character.getMorale();
+		this.morale = character.getMorale();
 		this.energy = character.getEnergy();
 		this.intelligence = character.getInt();
 		this.endurance = character.getEnd();
@@ -217,8 +217,8 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		character.setCharacterSprite(spriteArray[0]);
 	}
 	
-	public void updateStats(int moral, int energy){
-		this.moral = moral;
+	public void updateStats(int morale, int energy){
+		this.morale = morale;
 		this.energy = energy;
 		//display();
 	}

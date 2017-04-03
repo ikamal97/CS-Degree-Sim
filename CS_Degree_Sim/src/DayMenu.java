@@ -52,9 +52,9 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	public void createComponents(){
 		quit = new JButton("QUIT");
 		quit.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.GRAY, 2);
+		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		quit.setBackground(Color.ORANGE);
-		quit.setForeground(Color.GRAY);
+		quit.setForeground(Color.WHITE);
 		quit.setBounds(310, 350, 172, 30);
 		quit.setBorder(border);
 		quit.addActionListener(listen);
@@ -63,9 +63,9 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		
 		endDay = new JButton("END DAY");
 		endDay.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border2 = BorderFactory.createLineBorder(Color.GRAY, 2);
+		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		endDay.setBackground(Color.ORANGE);
-		endDay.setForeground(Color.GRAY);
+		endDay.setForeground(Color.WHITE);
 		endDay.setBounds(310, 310, 172, 30);
 		endDay.setBorder(border2);
 		endDay.addActionListener(listen);
@@ -110,7 +110,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		this.morale = morale;
 		this.energy = energy;
 		
-		this.moraleLabel.setText("morale: " + morale);
+		this.moraleLabel.setText("Morale: " + morale);
 		this.energyLabel.setText("Energy: " + energy);
 	}
 	
