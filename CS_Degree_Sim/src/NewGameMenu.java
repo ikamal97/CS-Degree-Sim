@@ -56,9 +56,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		startGame = new JButton("START GAME");
 		startGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		startGame.setBackground(Color.GRAY);
-		startGame.setForeground(Color.BLACK);
+		startGame.setForeground(Color.WHITE);
 		startGame.setBounds(210, 300, 300, 30);
 		startGame.setBorder(border);
 		startGame.addActionListener(listen);
@@ -67,9 +67,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		minusINT = new JButton("-");
 		minusINT.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		minusINT.setBackground(Color.GRAY);
-		minusINT.setForeground(Color.BLACK);
+		minusINT.setForeground(Color.WHITE);
 		minusINT.setBounds(200, 110, 46, 20);
 		minusINT.setBorder(border2);
 		minusINT.addActionListener(listen);
@@ -78,9 +78,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		plusINT = new JButton("+");
 		plusINT.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusINT.setBackground(Color.GRAY);
-		plusINT.setForeground(Color.BLACK);
+		plusINT.setForeground(Color.WHITE);
 		plusINT.setBounds(250, 110, 52, 20);
 		plusINT.setBorder(border3);
 		plusINT.addActionListener(listen);
@@ -89,9 +89,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		minusEND = new JButton("-");
 		minusEND.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		minusEND.setBackground(Color.GRAY);
-		minusEND.setForeground(Color.BLACK);
+		minusEND.setForeground(Color.WHITE);
 		minusEND.setBounds(200, 140, 46, 20);
 		minusEND.setBorder(border4);
 		minusEND.addActionListener(listen);
@@ -100,9 +100,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		plusEND = new JButton("+");
 		plusEND.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border5 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border5 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusEND.setBackground(Color.GRAY);
-		plusEND.setForeground(Color.BLACK);
+		plusEND.setForeground(Color.WHITE);
 		plusEND.setBounds(250, 140, 52, 20);
 		plusEND.setBorder(border5);
 		plusEND.addActionListener(listen);
@@ -111,9 +111,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		minusCHR = new JButton("-");
 		minusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border6 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border6 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		minusCHR.setBackground(Color.GRAY);
-		minusCHR.setForeground(Color.BLACK);
+		minusCHR.setForeground(Color.WHITE);
 		minusCHR.setBounds(200, 170, 46, 20);
 		minusCHR.setBorder(border6);
 		minusCHR.addActionListener(listen);
@@ -122,9 +122,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		plusCHR = new JButton("+");
 		plusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border7 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border7 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusCHR.setBackground(Color.GRAY);
-		plusCHR.setForeground(Color.BLACK);
+		plusCHR.setForeground(Color.WHITE);
 		plusCHR.setBounds(250, 170, 52, 20);
 		plusCHR.setBorder(border7);
 		plusCHR.addActionListener(listen);
@@ -133,9 +133,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		prevSprite = new JButton("<");
 		prevSprite.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border8 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border8 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		prevSprite.setBackground(Color.GRAY);
-		prevSprite.setForeground(Color.BLACK);
+		prevSprite.setForeground(Color.WHITE);
 		prevSprite.setBounds(350, 150, 20, 20);
 		prevSprite.setBorder(border8);
 		prevSprite.addActionListener(listen);
@@ -144,9 +144,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		
 		nextSprite = new JButton(">");
 		nextSprite.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border9 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border border9 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		nextSprite.setBackground(Color.GRAY);
-		nextSprite.setForeground(Color.BLACK);
+		nextSprite.setForeground(Color.WHITE);
 		nextSprite.setBounds(550, 150, 20, 20);
 		nextSprite.setBorder(border8);
 		nextSprite.addActionListener(listen);
