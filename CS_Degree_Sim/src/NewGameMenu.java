@@ -11,13 +11,16 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	private int moral, energy, intelligence, endurance, charisma; 
 	private csDegreeSim sim;
 	private int characterPoints = 10;
+	private int spriteNum = 0;
 	private JPanel bodyPanel;
+	private Image characterSprite;
+	private Image spriteArray[] = new Image[3];
 	private JTextField playerName;
 	private JLabel headerLabel, moralLabel, energyLabel, nameLabel;
 	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
-	private JLabel characterPointsLabel;
+	private JLabel characterPointsLabel, characterSpriteLabel;
 	private JButton startGame, minusINT, plusINT, minusEND, plusEND;
-	private JButton minusCHR, plusCHR;
+	private JButton minusCHR, plusCHR, prevSprite, nextSprite;
 	private NewGameMenuListener listen;
 	
 	
@@ -26,8 +29,9 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		this.character = character;
 		character.registerObserver(this);
 		
-		initialCharacterInfo(character.getMorale(), character.getEnergy(), 
-				character.getInt(), character.getEnd(), character.getChr());
+		getAllCharacterSprites();
+		
+		initialCharacterInfo();
 		
 		createPanels();
 		
@@ -43,7 +47,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		setSize(new Dimension(600, 350));
 		
 		bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.BLACK);
+		bodyPanel.setBackground(Color.BLUE);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
 	}
@@ -127,6 +131,28 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		plusCHR.setActionCommand("+CHR");	
 		bodyPanel.add(plusCHR);
 		
+		prevSprite = new JButton("<");
+		prevSprite.setFont(new Font("Dialog", Font.BOLD, 15));
+		Border border8 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		prevSprite.setBackground(Color.GRAY);
+		prevSprite.setForeground(Color.BLACK);
+		prevSprite.setBounds(350, 150, 20, 20);
+		prevSprite.setBorder(border8);
+		prevSprite.addActionListener(listen);
+		prevSprite.setActionCommand("<");	
+		bodyPanel.add(prevSprite);
+		
+		nextSprite = new JButton(">");
+		nextSprite.setFont(new Font("Dialog", Font.BOLD, 15));
+		Border border9 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		nextSprite.setBackground(Color.GRAY);
+		nextSprite.setForeground(Color.BLACK);
+		nextSprite.setBounds(550, 150, 20, 20);
+		nextSprite.setBorder(border8);
+		nextSprite.addActionListener(listen);
+		nextSprite.setActionCommand(">");	
+		bodyPanel.add(nextSprite);
+		
 		nameLabel = new JLabel("Player Name: ");
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		nameLabel.setForeground(Color.WHITE);
@@ -175,14 +201,20 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		charismaLabel.setBounds(50, 170, 176, 20);
 		bodyPanel.add(charismaLabel);
 		
+		characterSpriteLabel = new JLabel(new ImageIcon(spriteArray[0]));
+		characterSpriteLabel.setBounds(400, 10, 120, 300);
+		bodyPanel.add(characterSpriteLabel);
+		
 	}
 	
-	public void initialCharacterInfo(int moral, int energy, int intelligence, int endurance, int charisma){
-		this.moral = moral;
-		this.energy = energy;
-		this.intelligence = intelligence;
-		this.endurance = endurance;
-		this.charisma = charisma;
+	public void initialCharacterInfo(){
+		this.moral = character.getMorale();
+		this.energy = character.getEnergy();
+		this.intelligence = character.getInt();
+		this.endurance = character.getEnd();
+		this.charisma = character.getChr();
+		
+		character.setCharacterSprite(spriteArray[0]);
 	}
 	
 	public void updateStats(int moral, int energy){
@@ -199,6 +231,12 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		this.intelligenceLabel.setText("INT: " + intelligence);
 		this.enduranceLabel.setText("END: " + endurance);
 		this.charismaLabel.setText("CHR: " + charisma);
+	}
+	
+	public void getAllCharacterSprites(){
+		spriteArray[0] = Toolkit.getDefaultToolkit().getImage("images/character1.png");
+		spriteArray[1] = Toolkit.getDefaultToolkit().getImage("images/character2.png");
+		spriteArray[2] = Toolkit.getDefaultToolkit().getImage("images/character3.png");
 	}
 	
 	public void updateTimer(int time){
@@ -228,6 +266,10 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 				subChr();
 			if (event.getActionCommand().equals("+CHR"))
 				addChr();
+			if (event.getActionCommand().equals("<"))
+				prevSprite();
+			if (event.getActionCommand().equals(">"))
+				nextSprite();
 		}
 	}
 	
@@ -275,5 +317,22 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		this.characterPointsLabel.setText("Character points: " + characterPoints);
 	}
 	
+	public void nextSprite(){
+		spriteNum++;
+		if(spriteNum == 3){
+			spriteNum = 0;
+		}
+		character.setCharacterSprite(spriteArray[spriteNum]);
+		characterSpriteLabel.setIcon(new ImageIcon(spriteArray[spriteNum]));
+	}
+	
+	public void prevSprite(){
+		spriteNum--;
+		if(spriteNum == -1){
+			spriteNum = 2;
+		}
+		character.setCharacterSprite(spriteArray[spriteNum]);
+		characterSpriteLabel.setIcon(new ImageIcon(spriteArray[spriteNum]));
+	}
 
 }

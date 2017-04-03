@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.awt.*;
 
 public class Character implements Subject {
 	private String name;
+	private Image characterSprite;
 	private int morale, energy, maxEnergy;
 	private int intelligence, endurance, charisma;
 	private ArrayList<Observer> observers;
@@ -63,6 +65,10 @@ public class Character implements Subject {
 		return name;
 	}
 	
+	public Image getCharacterSprite(){
+		return characterSprite;
+	}
+	
 	public void increaseMorale(int increase){
 		morale += increase;
 		notifyObservers();
@@ -103,6 +109,10 @@ public class Character implements Subject {
 	
 	public void setName(String characterName){
 		name = characterName;
+	}
+	
+	public void setCharacterSprite(Image sprite){
+		characterSprite = sprite;
 	}
 	
 	public void resetDailyEnergy(){

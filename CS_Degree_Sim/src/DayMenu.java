@@ -11,9 +11,10 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	private csDegreeSim sim;
 	private Game game;
 	private int button = 0;
-	private Image background;
+	private Image background, characterSprite;
 	private JPanel bodyPanel, headerPanel;
-	private JLabel headerLabel, timerLabel, moralLabel, energyLabel, backgroundLabel;
+	private JLabel headerLabel, timerLabel, moralLabel, energyLabel;
+	private JLabel characterSpriteLabel, backgroundLabel;
 	private JButton quit, endDay;
 	private DayMenuListener listen;
 	
@@ -28,7 +29,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		game.registerObserver(this);
 		
 		character.resetDailyEnergy();
-		initialCharacterInfo(character.getMorale(), character.getEnergy());
+		initialCharacterInfo();
 		
 		createPanels();
 		
@@ -55,7 +56,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		Border border = BorderFactory.createLineBorder(Color.GRAY, 2);
 		quit.setBackground(Color.ORANGE);
 		quit.setForeground(Color.GRAY);
-		quit.setBounds(110, 300, 172, 30);
+		quit.setBounds(310, 350, 172, 30);
 		quit.setBorder(border);
 		quit.addActionListener(listen);
 		quit.setActionCommand("quit");;	
@@ -66,7 +67,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		Border border2 = BorderFactory.createLineBorder(Color.GRAY, 2);
 		endDay.setBackground(Color.ORANGE);
 		endDay.setForeground(Color.GRAY);
-		endDay.setBounds(310, 300, 172, 30);
+		endDay.setBounds(310, 310, 172, 30);
 		endDay.setBorder(border2);
 		endDay.addActionListener(listen);
 		endDay.setActionCommand("endDay");	
@@ -90,15 +91,20 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		energyLabel.setBounds(10, 40, 176, 20);
 		bodyPanel.add(energyLabel);
 		
+		characterSpriteLabel = new JLabel(new ImageIcon(characterSprite));
+		characterSpriteLabel.setBounds(100, 200, 120, 300);
+		bodyPanel.add(characterSpriteLabel);
+		
 		backgroundLabel = new JLabel(new ImageIcon(background));
 		backgroundLabel.setBounds(0, 0, 600, 400);
 		bodyPanel.add(backgroundLabel);
 		
 	}
 	
-	public void initialCharacterInfo(int moral, int energy){
-		this.moral = moral;
-		this.energy = energy;
+	public void initialCharacterInfo(){
+		this.moral = character.getMorale();
+		this.energy = character.getEnergy();
+		this.characterSprite = character.getCharacterSprite();
 	}
 	
 	public void updateStats(int moral, int energy){
