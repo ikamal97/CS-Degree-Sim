@@ -10,11 +10,12 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	private Character character;
 	private int moral, energy, intelligence, endurance, charisma; 
 	private csDegreeSim sim;
-	private int button = 0;
-	private JPanel bodyPanel, headerPanel;
+	private int characterPoints = 10;
+	private JPanel bodyPanel;
 	private JTextField playerName;
 	private JLabel headerLabel, moralLabel, energyLabel, nameLabel;
 	private JLabel intelligenceLabel, enduranceLabel, charismaLabel; 
+	private JLabel characterPointsLabel;
 	private JButton startGame, minusINT, plusINT, minusEND, plusEND;
 	private JButton minusCHR, plusCHR;
 	private NewGameMenuListener listen;
@@ -41,15 +42,8 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
 		
-		headerPanel = new JPanel();
-		headerPanel.setBackground(Color.white);
-		add(headerPanel, BorderLayout.NORTH);
-
-		headerLabel = new JLabel("Character Creation Screen");//
-		headerPanel.add(headerLabel);
-		
 		bodyPanel = new JPanel();
-		bodyPanel.setBackground(Color.BLUE);
+		bodyPanel.setBackground(Color.BLACK);
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
 	}
@@ -157,6 +151,12 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		energyLabel.setBounds(50, 80, 176, 20);
 		bodyPanel.add(energyLabel);
 		
+		characterPointsLabel = new JLabel("Character points: " + characterPoints);
+		characterPointsLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+		characterPointsLabel.setForeground(Color.WHITE);
+		characterPointsLabel.setBounds(180, 50, 176, 20);
+		bodyPanel.add(characterPointsLabel);
+		
 		intelligenceLabel = new JLabel("INT: " + intelligence);
 		intelligenceLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		intelligenceLabel.setForeground(Color.WHITE);
@@ -212,21 +212,68 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	public class NewGameMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			if (event.getActionCommand().equals("startGame")) 
+			if (event.getActionCommand().equals("startGame")) {
+				character.setName(playerName.getText());
 				sim.startDay();
+			}
 			if (event.getActionCommand().equals("-INT"))
-				character.setIntelligence(-1);
+				subInt();
 			if (event.getActionCommand().equals("+INT"))
-				character.setIntelligence(1);
+				addInt();
 			if (event.getActionCommand().equals("-END"))
-				character.setEndurance(-1);
+				subEnd();
 			if (event.getActionCommand().equals("+END"))
-				character.setEndurance(1);
+				addEnd();
 			if (event.getActionCommand().equals("-CHR"))
-				character.setCharisma(-1);
+				subChr();
 			if (event.getActionCommand().equals("+CHR"))
-				character.setCharisma(1);
+				addChr();
 		}
 	}
+	
+	public void addInt(){
+		if(characterPoints > 0){
+			character.setIntelligence(1);
+			characterPoints--;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	public void addEnd(){
+		if(characterPoints > 0){
+			character.setEndurance(1);
+			characterPoints--;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	public void addChr(){
+		if(characterPoints > 0){
+			character.setCharisma(1);
+			characterPoints--;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	
+	public void subInt(){
+		if(character.getInt() > 0){
+			character.setIntelligence(-1);
+			characterPoints++;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	public void subEnd(){
+		if(character.getEnd() > 0){
+			character.setEndurance(-1);
+			characterPoints++;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	public void subChr(){
+		if(character.getChr() > 0){
+			character.setCharisma(-1);
+			characterPoints++;
+		}
+		this.characterPointsLabel.setText("Character points: " + characterPoints);
+	}
+	
 
 }

@@ -59,6 +59,10 @@ public class Character implements Subject {
 		return charisma;
 	}
 	
+	public String getName(){
+		return name;
+	}
+	
 	public void increaseMorale(int increase){
 		morale += increase;
 		notifyObservers();
@@ -95,6 +99,10 @@ public class Character implements Subject {
 		charisma += value;
 		System.out.println(charisma);
 		notifyObservers();
+	}
+	
+	public void setName(String characterName){
+		name = characterName;
 	}
 	
 	public void resetDailyEnergy(){

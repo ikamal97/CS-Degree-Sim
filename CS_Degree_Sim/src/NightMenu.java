@@ -28,8 +28,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		character.registerObserver(this);
 		game.registerObserver(this);
 		
-		initialCharacterInfo(character.getMorale(), character.getEnergy(), 
-				character.getInt(), character.getEnd(), character.getChr());
+		initialCharacterInfo();
 		
 		createPanels();
 		
@@ -95,7 +94,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		plusCHR.setActionCommand("+CHR");	
 		bodyPanel.add(plusCHR);
 		
-		nameLabel = new JLabel("Player Name: New Player");
+		nameLabel = new JLabel("Player Name: " + characterName);
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(50, 20, 300, 22);
@@ -136,12 +135,13 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		bodyPanel.add(backgroundLabel);
 	}
 
-	public void initialCharacterInfo(int moral, int energy, int intelligence, int endurance, int charisma){
-		this.moral = moral;
-		this.energy = energy;
-		this.intelligence = intelligence;
-		this.endurance = endurance;
-		this.charisma = charisma;
+	public void initialCharacterInfo(){
+		this.characterName = character.getName();
+		this.moral = character.getMorale();
+		this.energy = character.getEnergy();
+		this.intelligence = character.getInt();
+		this.endurance = character.getEnd();
+		this.charisma = character.getChr();
 	}
 	
 	public void updateStats(int moral, int energy){
