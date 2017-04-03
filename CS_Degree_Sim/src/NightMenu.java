@@ -55,7 +55,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		nextDay.setBackground(Color.GRAY);
 		nextDay.setForeground(Color.WHITE);
-		nextDay.setBounds(50, 340, 300, 30);
+		nextDay.setBounds(25, 340, 300, 30);
 		nextDay.setBorder(border);
 		nextDay.addActionListener(listen);
 		nextDay.setActionCommand("nextDay");	
@@ -66,7 +66,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusINT.setBackground(Color.GRAY);
 		plusINT.setForeground(Color.WHITE);
-		plusINT.setBounds(50, 200, 200, 20);
+		plusINT.setBounds(25, 200, 200, 20);
 		plusINT.setBorder(border2);
 		plusINT.addActionListener(listen);
 		plusINT.setActionCommand("+INT");	
@@ -77,7 +77,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusEND.setBackground(Color.GRAY);
 		plusEND.setForeground(Color.WHITE);
-		plusEND.setBounds(50, 230, 200, 20);
+		plusEND.setBounds(25, 230, 200, 20);
 		plusEND.setBorder(border3);
 		plusEND.addActionListener(listen);
 		plusEND.setActionCommand("+END");	
@@ -88,7 +88,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		plusCHR.setBackground(Color.GRAY);
 		plusCHR.setForeground(Color.WHITE);
-		plusCHR.setBounds(50, 260, 200, 20);
+		plusCHR.setBounds(25, 260, 200, 20);
 		plusCHR.setBorder(border4);
 		plusCHR.addActionListener(listen);
 		plusCHR.setActionCommand("+CHR");	
@@ -97,37 +97,37 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		nameLabel = new JLabel("Player Name: " + characterName);
 		nameLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		nameLabel.setForeground(Color.WHITE);
-		nameLabel.setBounds(50, 20, 300, 22);
+		nameLabel.setBounds(25, 20, 300, 22);
 		bodyPanel.add(nameLabel);
 		
 		moraleLabel = new JLabel("Morale: " + morale);
 		moraleLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		moraleLabel.setForeground(Color.WHITE);
-		moraleLabel.setBounds(50, 50, 176, 18);
+		moraleLabel.setBounds(25, 50, 176, 18);
 		bodyPanel.add(moraleLabel);
 		
 		energyLabel = new JLabel("Energy: " + energy);
 		energyLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		energyLabel.setForeground(Color.WHITE);
-		energyLabel.setBounds(50, 80, 176, 20);
+		energyLabel.setBounds(25, 80, 176, 20);
 		bodyPanel.add(energyLabel);
 		
 		intelligenceLabel = new JLabel("INT: " + intelligence);
 		intelligenceLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		intelligenceLabel.setForeground(Color.WHITE);
-		intelligenceLabel.setBounds(50, 110, 176, 20);
+		intelligenceLabel.setBounds(25, 110, 176, 20);
 		bodyPanel.add(intelligenceLabel);
 		
 		enduranceLabel = new JLabel("END: " + endurance);
 		enduranceLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		enduranceLabel.setForeground(Color.WHITE);
-		enduranceLabel.setBounds(50, 140, 176, 20);
+		enduranceLabel.setBounds(25, 140, 176, 20);
 		bodyPanel.add(enduranceLabel);
 		
 		charismaLabel = new JLabel("CHR: " + charisma);
 		charismaLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		charismaLabel.setForeground(Color.WHITE);
-		charismaLabel.setBounds(50, 170, 176, 20);
+		charismaLabel.setBounds(25, 170, 176, 20);
 		bodyPanel.add(charismaLabel);
 		
 		backgroundLabel = new JLabel(new ImageIcon(background));
