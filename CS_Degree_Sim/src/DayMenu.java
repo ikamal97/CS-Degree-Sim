@@ -40,7 +40,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	
 	public void createPanels(){
 		setLayout(new BorderLayout(0, 0));
-		setSize(new Dimension(600, 350));
+		setSize(new Dimension(sim.Width, sim.Height));
 		
 		bodyPanel = new JPanel();
 		add(bodyPanel, BorderLayout.CENTER);

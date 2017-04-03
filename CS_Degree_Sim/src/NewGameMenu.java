@@ -65,7 +65,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		startGame.setActionCommand("startGame");	
 		bodyPanel.add(startGame);
 		
-		minusINT = new JButton("-INT");
+		minusINT = new JButton("-");
 		minusINT.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		minusINT.setBackground(Color.GRAY);
@@ -76,7 +76,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		minusINT.setActionCommand("-INT");	
 		bodyPanel.add(minusINT);
 		
-		plusINT = new JButton("+INT");
+		plusINT = new JButton("+");
 		plusINT.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusINT.setBackground(Color.GRAY);
@@ -87,7 +87,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		plusINT.setActionCommand("+INT");	
 		bodyPanel.add(plusINT);
 		
-		minusEND = new JButton("-END");
+		minusEND = new JButton("-");
 		minusEND.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		minusEND.setBackground(Color.GRAY);
@@ -98,7 +98,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		minusEND.setActionCommand("-END");	
 		bodyPanel.add(minusEND);
 		
-		plusEND = new JButton("+END");
+		plusEND = new JButton("+");
 		plusEND.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border5 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusEND.setBackground(Color.GRAY);
@@ -109,7 +109,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		plusEND.setActionCommand("+END");	
 		bodyPanel.add(plusEND);
 		
-		minusCHR = new JButton("-CHR");
+		minusCHR = new JButton("-");
 		minusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border6 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		minusCHR.setBackground(Color.GRAY);
@@ -120,7 +120,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		minusCHR.setActionCommand("-CHR");	
 		bodyPanel.add(minusCHR);
 		
-		plusCHR = new JButton("+CHR");
+		plusCHR = new JButton("+");
 		plusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
 		Border border7 = BorderFactory.createLineBorder(Color.BLACK, 2);
 		plusCHR.setBackground(Color.GRAY);
