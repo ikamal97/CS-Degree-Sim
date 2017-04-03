@@ -177,7 +177,7 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		energyLabel.setBounds(50, 80, 176, 20);
 		bodyPanel.add(energyLabel);
 		
-		characterPointsLabel = new JLabel("Character points: " + characterPoints);
+		characterPointsLabel = new JLabel("Points: " + characterPoints);
 		characterPointsLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		characterPointsLabel.setForeground(Color.WHITE);
 		characterPointsLabel.setBounds(180, 50, 176, 20);
@@ -278,21 +278,21 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 			character.setIntelligence(1);
 			characterPoints--;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	public void addEnd(){
 		if(characterPoints > 0){
 			character.setEndurance(1);
 			characterPoints--;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	public void addChr(){
 		if(characterPoints > 0){
 			character.setCharisma(1);
 			characterPoints--;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	
 	public void subInt(){
@@ -300,21 +300,21 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 			character.setIntelligence(-1);
 			characterPoints++;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	public void subEnd(){
 		if(character.getEnd() > 0){
 			character.setEndurance(-1);
 			characterPoints++;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	public void subChr(){
 		if(character.getChr() > 0){
 			character.setCharisma(-1);
 			characterPoints++;
 		}
-		this.characterPointsLabel.setText("Character points: " + characterPoints);
+		this.characterPointsLabel.setText("Points: " + characterPoints);
 	}
 	
 	public void nextSprite(){

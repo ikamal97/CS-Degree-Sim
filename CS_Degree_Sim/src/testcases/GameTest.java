@@ -8,8 +8,8 @@ public class GameTest {
 	@Test
         public void checkEnergyDepletion (){
 	  Character character=new Character();
-	  Game game= new Game(charcter);
-	  game.startday();
+	  Game game= new Game(character);
+	  game.startDay();
 	  assertEquals(10,game.getCharacterEnergy());
 	}
 	
