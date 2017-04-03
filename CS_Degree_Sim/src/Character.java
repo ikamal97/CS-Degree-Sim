@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.awt.*;
 
+/*
+ * A Character has three stats: morale, energy, and charisma
+ * and three traits, intelligence, endurance, charisma
+ * 
+ * Type of Subject that maintains observers (the various menus)
+ * 
+ * */
 public class Character implements Subject {
 	private String name;
 	private Image characterSprite;
@@ -118,6 +125,5 @@ public class Character implements Subject {
 	public void resetDailyEnergy(){
 		energy = maxEnergy;
 	}
-	
 
 }
