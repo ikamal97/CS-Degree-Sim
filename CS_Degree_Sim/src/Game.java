@@ -85,19 +85,23 @@ public class Game implements Subject {
 	
 	
 	public Event chooseEventType(int randomNumber){
-		if(randomNumber >=0 && randomNumber <= 50){
+		// 20% Chance of a good event every second
+		if(randomNumber >=0 && randomNumber <= 20){
 			System.out.println("Good Event");
 			GoodEvent goodEvent = new GoodEvent();
 			return goodEvent;
 		}
-		else if(randomNumber > 50 && randomNumber <= 100){
+		//20% chance of a bad event every second
+		else if(randomNumber > 80 && randomNumber <= 100){
 		    System.out.println("Bad Event");
 		    BadEvent badEvent = new BadEvent();
 		    return badEvent;
-		     
 		}
-	    
-	  return null;
+		//60% chance of a neutral event every second
+		else{
+			System.out.println("Neutral Event");
+		    return null;
+		}
 	}
 	
 	public void eventSelector(){
