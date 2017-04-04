@@ -83,6 +83,11 @@ public class Game implements Subject {
 		return randomNumber;
 	}
 	
+	public void eventSelector(){
+		int randomNumber = randomNumberGenerator();
+		
+		Event event = chooseEventType(randomNumber);
+	}
 	
 	public Event chooseEventType(int randomNumber){
 		// 20% Chance of a good event every second
@@ -104,34 +109,6 @@ public class Game implements Subject {
 		}
 	}
 	
-	public void eventSelector(){
-		int randomNumber = randomNumberGenerator();
-		
-		Event event = chooseEventType(randomNumber);
-		
-	}
-
-	public abstract class Event{
-	
-	
-	   
-	}
-	
-	public class GoodEvent extends Event{
-
-		public GoodEvent() {
-			
-			// TODO Auto-generated constructor stub
-		}
-		
-	}
-	public class BadEvent extends Event{
-
-		public BadEvent() {
-			
-		}
-		
-	}
 	
 
 }
