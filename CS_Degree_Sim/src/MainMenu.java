@@ -44,44 +44,44 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 
 		newGame = new JButton("NEW GAME");
 		newGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		newGame.setBackground(Color.BLACK);
-		newGame.setForeground(Color.WHITE);
+		newGame.setBackground(Color.WHITE);
+		newGame.setForeground(Color.BLACK);
 		newGame.setOpaque(true);
 		newGame.setBounds(210, 205, 200, 30);//210, 90, 200, 30
-		newGame.setBorder(null);
+		newGame.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		newGame.addActionListener(listen);
 		newGame.setActionCommand("newGame");	
 		bodyPanel.add(newGame);
 		
 		loadGame = new JButton("LOAD GAME");
 		loadGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		loadGame.setBackground(Color.BLACK);
-		loadGame.setForeground(Color.WHITE);
+		loadGame.setBackground(Color.WHITE);
+		loadGame.setForeground(Color.BLACK);
 		loadGame.setOpaque(true);
 		loadGame.setBounds(205, 255, 220, 30);//205, 160, 220, 30
-		loadGame.setBorder(null);
+		loadGame.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		loadGame.addActionListener(listen);
 		loadGame.setActionCommand("loadGame");
 		bodyPanel.add(loadGame);
 		
 		options = new JButton("OPTIONS");
 		options.setFont(new Font("Dialog", Font.BOLD, 30));
-		options.setBackground(Color.BLACK);
-		options.setForeground(Color.WHITE);
+		options.setBackground(Color.WHITE);
+		options.setForeground(Color.BLACK);
 		options.setOpaque(true);
 		options.setBounds(215, 305, 200, 30);//215, 230, 200, 30
-		options.setBorder(null);
+		options.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		options.addActionListener(listen);
 		options.setActionCommand("options");
 		bodyPanel.add(options);
 		
 		exit = new JButton("EXIT");
 		exit.setFont(new Font("Dialog", Font.BOLD, 30));
-		exit.setBackground(Color.BLACK);
-		exit.setForeground(Color.WHITE);
+		exit.setBackground(Color.WHITE);
+		exit.setForeground(Color.BLACK);
 		exit.setOpaque(true);
 		exit.setBounds(255, 355, 110, 30);//255, 300, 110, 30
-		exit.setBorder(null);
+		exit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		exit.addActionListener(listen);
 		exit.setActionCommand("exit");
 		bodyPanel.add(exit);
