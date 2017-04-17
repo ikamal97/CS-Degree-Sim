@@ -58,7 +58,15 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		quit.setBounds(310, 350, 172, 30);
 		quit.setBorder(null);
 		quit.addActionListener(listen);
-		quit.setActionCommand("quit");;	
+		quit.setActionCommand("quit");
+		quit.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				quit.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				quit.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(quit);
 		
 		endDay = new JButton("END DAY");
