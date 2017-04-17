@@ -52,24 +52,22 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	public void createComponents(){
 		quit = new JButton("QUIT");
 		quit.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
-		quit.setBackground(Color.ORANGE);
-		quit.setForeground(Color.WHITE);
+		quit.setBackground(Color.WHITE);
+		quit.setForeground(Color.BLACK);
 		quit.setOpaque(true);
 		quit.setBounds(310, 350, 172, 30);
-		quit.setBorder(border);
+		quit.setBorder(null);
 		quit.addActionListener(listen);
 		quit.setActionCommand("quit");;	
 		bodyPanel.add(quit);
 		
 		endDay = new JButton("END DAY");
 		endDay.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
-		endDay.setBackground(Color.ORANGE);
-		endDay.setForeground(Color.WHITE);
+		endDay.setBackground(Color.GRAY);
+		endDay.setForeground(Color.BLACK);
 		endDay.setOpaque(true);
 		endDay.setBounds(310, 310, 172, 30);
-		endDay.setBorder(border2);
+		endDay.setBorder(null);
 		endDay.addActionListener(listen);
 		endDay.setActionCommand("endDay");	
 		bodyPanel.add(endDay);
