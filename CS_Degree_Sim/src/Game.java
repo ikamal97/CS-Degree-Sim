@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 //import javax.swing.Timer;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JLabel;
 
 public class Game implements Subject {
 	private Character character;
@@ -12,45 +13,88 @@ public class Game implements Subject {
 	private Timer timer;
 	//public int seconds;
 	private ArrayList<Observer> observers;
-	
+
+	public Game(){
+		this.character = null;
+		observers = new ArrayList<Observer>();
+	}
 	
 	public Game(Character character){
 		this.character = character;
 		observers = new ArrayList<Observer>();
 	}
-	
+
+	/* Observer Pattern Functions */
 	public void registerObserver(Observer o){
 		observers.add(o);
 	}
-	
+
 	public void removeObserver(Observer o){
 		int index = observers.indexOf(o);
 		if(index >= 0)
 			observers.remove(index);
 	}
-	
+
 	public void notifyObservers(){
 		for(Observer observer : observers){
 			observer.updateTimer(eventTimer.seconds);
 		}	
 	}
-	
+
 	public void depleteEnergy(){
 		if(character.getEnergy() > 0)
 			character.damageEnergy(1);
 	}
-	
+
 	public void startDay(){
 		System.out.println("Day is starting");
 		eventTimer = new EventTimer();
 	}
-	
+
 	public void stopTimer(){
 		timer.cancel();
 	}
 	
+	public int randomNumberGenerator(){
+		Random RNG = new Random();
+		int randomNumber = RNG.nextInt(100); //0-100
+		return randomNumber;
+	}
+
+	public void eventSelector(){
+		int randomNumber = randomNumberGenerator();
+		Event event = chooseEventType(randomNumber);
+	}
+
+	public Event chooseEventType(int randomNumber){
+		// 20% Chance of a good event every second
+		if(randomNumber >=0 && randomNumber <= 20){
+			System.out.println("Good Event");
+			displayGoodEventNotification();
+			GoodEvent goodEvent = new GoodEvent();
+			return goodEvent;
+		}
+
+		//20% chance of a bad event every second
+		else if(randomNumber > 80 && randomNumber <= 100){
+			System.out.println("Bad Event");
+			BadEvent badEvent = new BadEvent();
+			return badEvent;
+		}
+		//60% chance of a neutral event every second
+		else{
+			System.out.println("Neutral Event");
+			return null;
+		}
+	}
+
+	public void displayGoodEventNotification(){
+		JLabel notificationLabel = new JLabel();
+
+	}
+	
 	public class EventTimer{
-	    //Timer timer;
+	    private Timer timer;
 	    int seconds = 1;
 	    
 	    public EventTimer() {
@@ -76,39 +120,6 @@ public class Game implements Subject {
 	    	}
 	    }	
 	}
-	
-	public int randomNumberGenerator(){
-		Random RNG = new Random();
-		int randomNumber = RNG.nextInt(100); //0-100
-		return randomNumber;
-	}
-	
-	public void eventSelector(){
-		int randomNumber = randomNumberGenerator();
-		
-		Event event = chooseEventType(randomNumber);
-	}
-	
-	public Event chooseEventType(int randomNumber){
-		// 20% Chance of a good event every second
-		if(randomNumber >=0 && randomNumber <= 20){
-			System.out.println("Good Event");
-			GoodEvent goodEvent = new GoodEvent();
-			return goodEvent;
-		}
-		//20% chance of a bad event every second
-		else if(randomNumber > 80 && randomNumber <= 100){
-		    System.out.println("Bad Event");
-		    BadEvent badEvent = new BadEvent();
-		    return badEvent;
-		}
-		//60% chance of a neutral event every second
-		else{
-			System.out.println("Neutral Event");
-		    return null;
-		}
-	}
-	
-	
-
 }
+
+
