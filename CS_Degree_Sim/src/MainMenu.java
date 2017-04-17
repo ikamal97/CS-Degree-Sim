@@ -44,44 +44,44 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 
 		newGame = new JButton("NEW GAME");
 		newGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		newGame.setBackground(Color.BLACK);
 		newGame.setForeground(Color.WHITE);
+		newGame.setOpaque(true);
 		newGame.setBounds(210, 205, 200, 30);//210, 90, 200, 30
-		newGame.setBorder(border);
+		newGame.setBorder(null);
 		newGame.addActionListener(listen);
 		newGame.setActionCommand("newGame");	
 		bodyPanel.add(newGame);
 		
 		loadGame = new JButton("LOAD GAME");
 		loadGame.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		loadGame.setBackground(Color.BLACK);
 		loadGame.setForeground(Color.WHITE);
+		loadGame.setOpaque(true);
 		loadGame.setBounds(205, 255, 220, 30);//205, 160, 220, 30
-		loadGame.setBorder(border2);
+		loadGame.setBorder(null);
 		loadGame.addActionListener(listen);
 		loadGame.setActionCommand("loadGame");
 		bodyPanel.add(loadGame);
 		
 		options = new JButton("OPTIONS");
 		options.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		options.setBackground(Color.BLACK);
 		options.setForeground(Color.WHITE);
+		options.setOpaque(true);
 		options.setBounds(215, 305, 200, 30);//215, 230, 200, 30
-		options.setBorder(border3);
+		options.setBorder(null);
 		options.addActionListener(listen);
 		options.setActionCommand("options");
 		bodyPanel.add(options);
 		
 		exit = new JButton("EXIT");
 		exit.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		exit.setBackground(Color.BLACK);
 		exit.setForeground(Color.WHITE);
+		exit.setOpaque(true);
 		exit.setBounds(255, 355, 110, 30);//255, 300, 110, 30
-		exit.setBorder(border4);
+		exit.setBorder(null);
 		exit.addActionListener(listen);
 		exit.setActionCommand("exit");
 		bodyPanel.add(exit);
