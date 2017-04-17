@@ -95,7 +95,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		bodyPanel.add(characterSpriteLabel);
 		
 		backgroundLabel = new JLabel(new ImageIcon(background));
-		backgroundLabel.setBounds(0, 0, 600, 400);
+		backgroundLabel.setBounds(0, 0, 600, 402);
 		bodyPanel.add(backgroundLabel);
 		
 	}
