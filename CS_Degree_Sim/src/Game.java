@@ -37,10 +37,11 @@ public class Game implements Subject {
 
 	public void notifyObservers(){
 		for(Observer observer : observers){
-			observer.updateTimer(eventTimer.seconds);
+			observer.updateTimer(eventTimer.getSeconds());
 		}	
 	}
 
+	/* Character's energy is depleted every second */
 	public void depleteEnergy(){
 		if(character.getEnergy() > 0)
 			character.damageEnergy(1);
@@ -90,12 +91,11 @@ public class Game implements Subject {
 
 	public void displayGoodEventNotification(){
 		JLabel notificationLabel = new JLabel();
-
 	}
 	
 	public class EventTimer{
 	    private Timer timer;
-	    int seconds = 1;
+	    private int seconds = 1;
 	    
 	    public EventTimer() {
 	        timer = new Timer();

@@ -40,7 +40,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	
 	public void createPanels(){
 		setLayout(new BorderLayout(0, 0));
-		setSize(new Dimension(sim.Width, sim.Height));
+		setSize(new Dimension(csDegreeSim.Width, csDegreeSim.Height));
 		
 		bodyPanel = new JPanel();
 		add(bodyPanel, BorderLayout.CENTER);
@@ -55,6 +55,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
 		quit.setBackground(Color.ORANGE);
 		quit.setForeground(Color.WHITE);
+		quit.setOpaque(true);
 		quit.setBounds(310, 350, 172, 30);
 		quit.setBorder(border);
 		quit.addActionListener(listen);
@@ -66,6 +67,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		endDay.setBackground(Color.ORANGE);
 		endDay.setForeground(Color.WHITE);
+		endDay.setOpaque(true);
 		endDay.setBounds(310, 310, 172, 30);
 		endDay.setBorder(border2);
 		endDay.addActionListener(listen);
