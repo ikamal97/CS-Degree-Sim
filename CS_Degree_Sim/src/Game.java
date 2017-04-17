@@ -94,7 +94,6 @@ public class Game implements Subject {
 	}
 	
 	public class EventTimer{
-	    private Timer timer;
 	    private int seconds = 1;
 	    
 	    public EventTimer() {
