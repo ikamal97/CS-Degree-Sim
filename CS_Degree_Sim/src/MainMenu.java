@@ -16,27 +16,27 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 	private JLabel headerLabel, titleLabel, backgroundLabel;
 	private JButton newGame, loadGame, options, exit;
 	private MainMenuListener listen;
-	
+
 	public MainMenu(csDegreeSim sim){
 		this.sim = sim;
-		
+
 		createPanels();
-		
+
 		listen = new MainMenuListener();
 		//addKeyListener(this);
-		
+
 		createComponents();
-		
+
 	}
-	
+
 	public void createPanels(){
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(600, 350));
-		
+
 		bodyPanel = new JPanel();
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
-		
+
 		background = Toolkit.getDefaultToolkit().getImage("images/main_menu_background_600x402.png");
 	}
 
@@ -50,9 +50,18 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		newGame.setBounds(210, 205, 200, 30);//210, 90, 200, 30
 		newGame.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		newGame.addActionListener(listen);
-		newGame.setActionCommand("newGame");	
+		newGame.setActionCommand("newGame");
+		// Controls the mouse hover effect that changes the button color
+		newGame.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				newGame.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				newGame.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(newGame);
-		
+
 		loadGame = new JButton("LOAD GAME");
 		loadGame.setFont(new Font("Dialog", Font.BOLD, 30));
 		loadGame.setBackground(Color.WHITE);
@@ -62,8 +71,17 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		loadGame.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		loadGame.addActionListener(listen);
 		loadGame.setActionCommand("loadGame");
+		// Controls the mouse hover effect that changes the button color
+		loadGame.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				loadGame.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				loadGame.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(loadGame);
-		
+
 		options = new JButton("OPTIONS");
 		options.setFont(new Font("Dialog", Font.BOLD, 30));
 		options.setBackground(Color.WHITE);
@@ -73,8 +91,17 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		options.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		options.addActionListener(listen);
 		options.setActionCommand("options");
+		// Controls the mouse hover effect that changes the button color
+		options.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				options.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				options.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(options);
-		
+
 		exit = new JButton("EXIT");
 		exit.setFont(new Font("Dialog", Font.BOLD, 30));
 		exit.setBackground(Color.WHITE);
@@ -84,38 +111,47 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		exit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		exit.addActionListener(listen);
 		exit.setActionCommand("exit");
+		// Controls the mouse hover effect that changes the button color
+		exit.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				exit.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				exit.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(exit);
-		
+
 		backgroundLabel = new JLabel(new ImageIcon(background));
 		backgroundLabel.setBounds(0, 0, 600, 400);
 		bodyPanel.add(backgroundLabel);
-		
-		
+
+
 	}
-	
+
 	/*public MainMenu(Subject Character){//recieves reference to subject
 		this.Character = Character;
 		Character.registerObserver(this);//registers this observer with subject
 	}*/
-	
+
 	public void updateStats(int stats, int energy){
 		this.screenStats = stats;
 		//display();
 	}
-	
+
 	public void updateTraits(int intelligence, int endurance, int charisma){
-		
+
 		//display();
 	}
-	
+
 	public void updateTimer(int time){
 		//display();
 	}
-	
+
 	//public void display(){
-		//code for updating display	
+	//code for updating display	
 	//}
-	
+
 	public class MainMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
@@ -129,7 +165,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 				sim.exit();	
 		}
 	}
-	
+
 	/*
 	@Override
 	public void keyTyped(KeyEvent e){
@@ -155,17 +191,17 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 			getButtonFocus().setBackground(Color.GREEN);
 		}
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e){
 
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e){
-		
+
 	}
-	
+
 	public void setButtonFocus(){
 		switch(button){
 		case 0:
@@ -178,7 +214,7 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 			exit.requestFocus();
 		}
 	}
-	
+
 	public JButton getButtonFocus(){
 		switch(button){
 		case 0:
