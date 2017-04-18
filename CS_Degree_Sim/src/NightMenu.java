@@ -52,46 +52,82 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	public void createComponents() {
 		nextDay = new JButton("NEXT DAY");
 		nextDay.setFont(new Font("Dialog", Font.BOLD, 30));
-		Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
-		nextDay.setBackground(Color.GRAY);
-		nextDay.setForeground(Color.WHITE);
+		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+		nextDay.setBackground(Color.WHITE);
+		nextDay.setForeground(Color.BLACK);
+		nextDay.setOpaque(true);
 		nextDay.setBounds(25, 340, 300, 30);
 		nextDay.setBorder(border);
 		nextDay.addActionListener(listen);
-		nextDay.setActionCommand("nextDay");	
+		nextDay.setActionCommand("nextDay");
+		nextDay.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				nextDay.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				nextDay.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(nextDay);
 		
 		plusINT = new JButton("STUDY: +INT(5 Energy)");
 		plusINT.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border2 = BorderFactory.createLineBorder(Color.WHITE, 2);
-		plusINT.setBackground(Color.GRAY);
-		plusINT.setForeground(Color.WHITE);
+		Border border2 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		plusINT.setBackground(Color.WHITE);
+		plusINT.setForeground(Color.BLACK);
+		plusINT.setOpaque(true);
 		plusINT.setBounds(25, 200, 200, 20);
 		plusINT.setBorder(border2);
 		plusINT.addActionListener(listen);
-		plusINT.setActionCommand("+INT");	
+		plusINT.setActionCommand("+INT");
+		plusINT.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				plusINT.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				plusINT.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(plusINT);
 		
 		plusEND = new JButton("LIFT: +END(8 Energy)");
 		plusEND.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border3 = BorderFactory.createLineBorder(Color.WHITE, 2);
-		plusEND.setBackground(Color.GRAY);
-		plusEND.setForeground(Color.WHITE);
+		Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		plusEND.setBackground(Color.WHITE);
+		plusEND.setForeground(Color.BLACK);
+		plusEND.setOpaque(true);
 		plusEND.setBounds(25, 230, 200, 20);
 		plusEND.setBorder(border3);
 		plusEND.addActionListener(listen);
 		plusEND.setActionCommand("+END");	
+		plusEND.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				plusEND.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				plusEND.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(plusEND);
 		
 		plusCHR = new JButton("DRINK: +CHR(4 Energy)");
 		plusCHR.setFont(new Font("Dialog", Font.BOLD, 15));
-		Border border4 = BorderFactory.createLineBorder(Color.WHITE, 2);
-		plusCHR.setBackground(Color.GRAY);
-		plusCHR.setForeground(Color.WHITE);
+		Border border4 = BorderFactory.createLineBorder(Color.BLACK, 2);
+		plusCHR.setBackground(Color.WHITE);
+		plusCHR.setForeground(Color.BLACK);
+		plusCHR.setOpaque(true);
 		plusCHR.setBounds(25, 260, 200, 20);
 		plusCHR.setBorder(border4);
 		plusCHR.addActionListener(listen);
 		plusCHR.setActionCommand("+CHR");	
+		plusCHR.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent evt) {
+				plusCHR.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent evt) {
+				plusCHR.setBackground(Color.WHITE);
+			}
+		});
 		bodyPanel.add(plusCHR);
 		
 		nameLabel = new JLabel("Player Name: " + characterName);
