@@ -11,11 +11,12 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	private csDegreeSim sim;
 	private Game game;
 	private Event gameEvent;
+	private Calendar calendar;
 	private boolean messageEnabled;
 	private Image background, characterSprite;
 	private JPanel messagePanel;//bodyPanel;
 	private JLayeredPane bodyPanel;
-	private JLabel timerLabel, moraleLabel, energyLabel;
+	private JLabel timerLabel, moraleLabel, energyLabel, calendarLabel;
 	private JLabel characterSpriteLabel, backgroundLabel, messageLabel;
 	private JButton quit, endDay, quitMessage, chanceButton, statButton;
 	private DayMenuListener listen;
@@ -27,6 +28,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		this.game = game;
 		this.time = 0;
 		this.messageEnabled = false;
+		this.calendar = new Calendar();
 		
 		character.registerObserver(this);
 		game.registerObserver(this);
