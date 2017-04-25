@@ -207,7 +207,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 				chanceButton = new JButton(gameEvent.successChance + "% Success Chance");
 				chanceButton.setFont(new Font("Dialog", Font.BOLD, 30));
-				chanceButton.setBackground(Color.BLUE);
+				chanceButton.setBackground(Color.WHITE);
 				chanceButton.setForeground(Color.BLACK);
 				chanceButton.setOpaque(true);
 				chanceButton.setBounds(250, 250, 172, 30);
@@ -218,7 +218,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 				statButton = new JButton(gameEvent.statSuccess + " " + gameEvent.statLimit);
 				statButton.setFont(new Font("Dialog", Font.BOLD, 30));
-				statButton.setBackground(Color.BLUE);
+				statButton.setBackground(Color.WHITE);
 				statButton.setForeground(Color.BLACK);
 				statButton.setOpaque(true);
 				statButton.setBounds(250, 250, 172, 30);
