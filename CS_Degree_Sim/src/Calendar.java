@@ -19,7 +19,7 @@ public class Calendar implements Subject{
 		currentDay = 0;
 	}
 
-	/* Increments the calendar to tomorrow */
+	/* Increments the calendar to next week */
 	public void nextDay(){
 		// End of month case
 		if(currentDay == day[index]){

@@ -146,7 +146,7 @@ public class Game implements Subject {
 	    		System.out.println("second: " + seconds);
 	    		notifyObservers();
 	    		depleteEnergy();
-	    		//eventSelector();
+	    		eventSelector();
 	    		seconds++;
 	    		if(seconds == 11 || seconds > 11){
 	    			timer.cancel();
