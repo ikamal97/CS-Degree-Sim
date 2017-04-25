@@ -413,4 +413,10 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		characterSpriteLabel.setIcon(new ImageIcon(spriteArray[spriteNum]));
 	}
 
+	@Override
+	public void updateCalendar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

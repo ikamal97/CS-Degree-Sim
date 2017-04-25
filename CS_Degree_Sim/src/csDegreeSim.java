@@ -14,6 +14,7 @@ public class csDegreeSim{
 	public JFrame frame;
 	public Game gameSystem;
 	public Character playerCharacter;
+	public Calendar calendar;
 	public MainMenu mainMenu;
 	public NewGameMenu newGameMenu;
 	public DayMenu dayMenu;
@@ -51,13 +52,14 @@ public class csDegreeSim{
 	public void newGame(){
 		System.out.println("New Game selected");
 		playerCharacter = new Character();
-		gameSystem = new Game(playerCharacter);
+		calendar = new Calendar();
+		gameSystem = new Game(playerCharacter, calendar);
 		setPanel(new NewGameMenu(this, playerCharacter));
 	}
 	
 	public void loadGame(){
 		System.out.println("Load Game selected");
-		setPanel(new DayMenu(this, gameSystem, playerCharacter));
+		setPanel(new DayMenu(this, gameSystem, playerCharacter, calendar));
 		gameSystem.startDay();
 	}
 	
@@ -73,7 +75,7 @@ public class csDegreeSim{
 	
 	public void startDay(){	
 		System.out.println("New Day selected");
-		setPanel(new DayMenu(this, gameSystem, playerCharacter));
+		setPanel(new DayMenu(this, gameSystem, playerCharacter, calendar));
 		gameSystem.startDay();
 	}
 	

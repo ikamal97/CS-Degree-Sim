@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 public class Game implements Subject {
 	private Character character;
+	private Calendar calendar;
 	public EventTimer eventTimer;
 	private Timer timer;
 	public int currentSecond;
@@ -22,7 +23,8 @@ public class Game implements Subject {
 		observers = new ArrayList<Observer>();
 	}
 	
-	public Game(Character character){
+	public Game(Character character, Calendar calendar){
+		this.calendar = calendar;
 		this.character = character;
 		observers = new ArrayList<Observer>();
 	}
@@ -53,6 +55,7 @@ public class Game implements Subject {
 
 	public void startDay(){
 		System.out.println("Day is starting");
+		calendar.nextDay();
 		eventTimer = new EventTimer();
 	}
 
@@ -143,7 +146,7 @@ public class Game implements Subject {
 	    		System.out.println("second: " + seconds);
 	    		notifyObservers();
 	    		depleteEnergy();
-	    		eventSelector();
+	    		//eventSelector();
 	    		seconds++;
 	    		if(seconds == 11 || seconds > 11){
 	    			timer.cancel();

@@ -22,16 +22,17 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	private DayMenuListener listen;
 	
 	
-	public DayMenu(csDegreeSim sim, Game game, Character character){
+	public DayMenu(csDegreeSim sim, Game game, Character character, Calendar calendar){
 		this.sim = sim;
 		this.character = character;
 		this.game = game;
+		this.calendar = calendar;
 		this.time = 0;
 		this.messageEnabled = false;
-		this.calendar = new Calendar();
 		
 		character.registerObserver(this);
 		game.registerObserver(this);
+		calendar.registerObserver(this);
 		
 		character.resetDailyEnergy();
 		initialCharacterInfo();
@@ -104,6 +105,12 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		energyLabel.setBounds(10, 40, 176, 20);
 		bodyPanel.add(energyLabel);
 		
+		calendarLabel = new JLabel(calendar.getMonth() + " " + calendar.getDay() + ", " + calendar.getYear());
+		calendarLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+		calendarLabel.setForeground(Color.WHITE);
+		calendarLabel.setBounds(250, 10, 176, 20);
+		bodyPanel.add(calendarLabel);
+		
 		characterSpriteLabel = new JLabel(new ImageIcon(characterSprite));
 		characterSpriteLabel.setBounds(100, 200, 120, 300);
 		bodyPanel.add(characterSpriteLabel);
@@ -138,6 +145,11 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		this.timerLabel.setText("Time: " + time);
 		if(time == 10)
 			endDay.setBackground(Color.GREEN);
+	}
+	
+	@Override
+	public void updateCalendar() {
+		calendarLabel.setText(calendar.getMonth() + " " + calendar.getDay() + ", " + calendar.getYear());
 	}
 	
 	public void displayMessage(boolean isEnabled){

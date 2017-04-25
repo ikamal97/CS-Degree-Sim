@@ -242,4 +242,10 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 		}
 	}
 
+	@Override
+	public void updateCalendar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -6,4 +6,5 @@ public interface Observer {
 	public void updateTraits(int intelligence, int endurance, int charisma);
 	public void updateTimer(int time);
 	public void displayMessage(boolean isEnabled);
+	public void updateCalendar();
 }
