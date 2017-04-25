@@ -175,11 +175,12 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				messageLabel = new JLabel(html1 + "200" + html2 + gameEvent.dialog);//
 				//messageLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 				messageLabel.setHorizontalTextPosition(JLabel.CENTER);
+				messageLabel.setVerticalTextPosition(JLabel.CENTER);
 				messageLabel.setForeground(Color.WHITE);
 				messageLabel.setBounds(150, 150, 400, 18);
 				messagePanel.add(messageLabel);
 
-				quitMessage = new JButton("OKAY ("+ gameEvent.moralModifier + " moral)");
+				quitMessage = new JButton("OKAY ("+ gameEvent.moralModifier + " morale)");
 				quitMessage.setFont(new Font("Dialog", Font.BOLD, 30));
 				quitMessage.setBackground(Color.WHITE);
 				quitMessage.setForeground(Color.BLACK);

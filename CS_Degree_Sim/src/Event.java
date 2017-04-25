@@ -35,23 +35,23 @@ class SimpleEvent extends Event{
 	public void selectEvent(int eventNumber){
 		switch(eventNumber){
 		case 0:
-			dialog = "A Professor has extended an assignment deadline by a week. (+2 moral)";
+			dialog = "A Professor has extended an assignment deadline by a week. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 1:
-			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-4 moral)";
+			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-4 morale)";
 			moralModifier = -4;
 			return;
 		case 2:
-			dialog = "You found the exact solution to an assignment online. (+2 moral)";
+			dialog = "You found the exact solution to an assignment online. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 3:
-			dialog = "You missed the bus and missed a lecture as a result. (-3 moral)";
+			dialog = "You missed the bus and missed a lecture as a result. (-3 morale)";
 			moralModifier = -3;
 			return;
 		case 4:
-			dialog = "You tripped on your way to the next lecture. (-1 moral)";
+			dialog = "You tripped on your way to the next lecture. (-1 morale)";
 			moralModifier = -1;
 			return;
 		}
