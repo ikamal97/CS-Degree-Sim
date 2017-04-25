@@ -24,7 +24,7 @@ public abstract class Event {
 
 class SimpleEvent extends Event{
 	int eventNum;
-	int eventRange = 3;
+	int eventRange = 4;
 	
 	public SimpleEvent() {
 		eventType = "simple";
@@ -39,16 +39,16 @@ class SimpleEvent extends Event{
 			moralModifier = 2;
 			return;
 		case 1:
-			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-4 morale)";
-			moralModifier = -4;
+			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-10 morale)";
+			moralModifier = -10;
 			return;
 		case 2:
 			dialog = "You found the exact solution to an assignment online. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 3:
-			dialog = "You missed the bus and missed a lecture as a result. (-3 morale)";
-			moralModifier = -3;
+			dialog = "You missed the bus and missed a lecture as a result. (-5 morale)";
+			moralModifier = -5;
 			return;
 		case 4:
 			dialog = "You tripped on your way to the next lecture. (-1 morale)";
@@ -62,7 +62,7 @@ class SimpleEvent extends Event{
 
 class ChoiceEvent extends Event{
 	int eventNum;
-	int eventRange = 2;
+	int eventRange = 4;
 	
 	public ChoiceEvent() {
 		eventType = "choice";
@@ -73,12 +73,12 @@ class ChoiceEvent extends Event{
 	public void selectEvent(int eventNumber){
 		switch(eventNumber){
 		case 0:
-			dialog = "A classmate claims to have the solution to a current assignment, you try to persuade him to give it to you.";
+			dialog = "A classmate claims to have the solution to a current assignment. You try to persuade him to give it to you.";
 			statLimit = "CHR";
 			statSuccess = 16;
 			successChance = 30;
-			moralIncrease = 5;
-			moralDamage = 3;
+			moralIncrease = 7;
+			moralDamage = 5;
 			return;
 		case 1:
 			dialog = "Your professor calls on you in the middle of the lecture to answer a question.";
@@ -86,14 +86,14 @@ class ChoiceEvent extends Event{
 			statSuccess = 10;
 			successChance = 45;
 			moralIncrease = 2;
-			moralDamage = 3;
+			moralDamage = 5;
 			return;
 		case 2:
 			dialog = "A pop quiz happens in a lecture.";
 			statLimit = "INT";
 			statSuccess = 14;
 			successChance = 25;
-			moralIncrease = 3;
+			moralIncrease = 10;
 			moralDamage = 7;
 			return;
 		case 3:
