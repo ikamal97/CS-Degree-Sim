@@ -59,7 +59,6 @@ class SimpleEvent extends Event{
 	
 }
 
-
 class ChoiceEvent extends Event{
 	int eventNum;
 	int eventRange = 4;
