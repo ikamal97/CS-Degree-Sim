@@ -181,13 +181,21 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 
 				quitMessage = new JButton("OKAY ("+ gameEvent.moralModifier + " moral)");
 				quitMessage.setFont(new Font("Dialog", Font.BOLD, 30));
-				quitMessage.setBackground(Color.BLUE);
+				quitMessage.setBackground(Color.WHITE);
 				quitMessage.setForeground(Color.BLACK);
 				quitMessage.setOpaque(true);
 				quitMessage.setBounds(250, 250, 172, 30);
 				quitMessage.setBorder(border);
 				quitMessage.addActionListener(listen);
 				quitMessage.setActionCommand("okay");	
+				quitMessage.addMouseListener(new MouseAdapter(){
+					public void mouseEntered(MouseEvent evt) {
+						quitMessage.setBackground(Color.GREEN);
+					}
+					public void mouseExited(MouseEvent evt) {
+						quitMessage.setBackground(Color.WHITE);
+					}
+				});
 				messagePanel.add(quitMessage);
 
 			}
@@ -213,7 +221,15 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				chanceButton.setBounds(250, 250, 172, 30);
 				chanceButton.setBorder(border);
 				chanceButton.addActionListener(listen);
-				chanceButton.setActionCommand("chanceEvent");	
+				chanceButton.setActionCommand("chanceEvent");
+				chanceButton.addMouseListener(new MouseAdapter(){
+					public void mouseEntered(MouseEvent evt) {
+						chanceButton.setBackground(Color.GREEN);
+					}
+					public void mouseExited(MouseEvent evt) {
+						chanceButton.setBackground(Color.WHITE);
+					}
+				});
 				messagePanel.add(chanceButton);
 
 				statButton = new JButton(gameEvent.statSuccess + " " + gameEvent.statLimit);
@@ -224,7 +240,15 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				statButton.setBounds(250, 250, 172, 30);
 				statButton.setBorder(border);
 				statButton.addActionListener(listen);
-				statButton.setActionCommand("statEvent");	
+				statButton.setActionCommand("statEvent");
+				statButton.addMouseListener(new MouseAdapter(){
+					public void mouseEntered(MouseEvent evt) {
+						statButton.setBackground(Color.GREEN);
+					}
+					public void mouseExited(MouseEvent evt) {
+						statButton.setBackground(Color.WHITE);
+					}
+				});
 				messagePanel.add(statButton);
 
 			}
