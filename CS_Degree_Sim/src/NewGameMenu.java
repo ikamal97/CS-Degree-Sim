@@ -243,36 +243,42 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 		moraleLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		moraleLabel.setForeground(Color.WHITE);
 		moraleLabel.setBounds(50, 50, 176, 18);
+		moraleLabel.setToolTipText("Morale is your character's health bar. Let it drop to 0 and you will drop out!");
 		bodyPanel.add(moraleLabel);
 
 		energyLabel = new JLabel("Energy: " + energy);
 		energyLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		energyLabel.setForeground(Color.WHITE);
 		energyLabel.setBounds(50, 80, 176, 20);
+		energyLabel.setToolTipText("Energy is used to upgrade your other stats. Keep it as high as possible!");
 		bodyPanel.add(energyLabel);
 
 		characterPointsLabel = new JLabel("Points: " + characterPoints);
 		characterPointsLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		characterPointsLabel.setForeground(Color.WHITE);
-		characterPointsLabel.setBounds(180, 50, 176, 20);
+		characterPointsLabel.setBounds(190, 50, 176, 20);
+		characterPointsLabel.setToolTipText("Spend these on upgrading your stats.");
 		bodyPanel.add(characterPointsLabel);
 
 		intelligenceLabel = new JLabel("INT: " + intelligence);
 		intelligenceLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		intelligenceLabel.setForeground(Color.WHITE);
 		intelligenceLabel.setBounds(50, 110, 176, 20);
+		intelligenceLabel.setToolTipText("Intelligence will come in handy when your character needs some extra brain power!");
 		bodyPanel.add(intelligenceLabel);
 
 		enduranceLabel = new JLabel("END: " + endurance);
 		enduranceLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		enduranceLabel.setForeground(Color.WHITE);
 		enduranceLabel.setBounds(50, 140, 176, 20);
+		enduranceLabel.setToolTipText("Endurance keeps your character alert and on its toes. The more your Endurance the more your Energy!");
 		bodyPanel.add(enduranceLabel);
 
 		charismaLabel = new JLabel("CHR: " + charisma);
 		charismaLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		charismaLabel.setForeground(Color.WHITE);
 		charismaLabel.setBounds(50, 170, 176, 20);
+		charismaLabel.setToolTipText("Charisma is the social adeptness of your character. This will come in handy when you forget to study and you're in a bind!");
 		bodyPanel.add(charismaLabel);
 
 		characterSpriteLabel = new JLabel(new ImageIcon(spriteArray[0]));
