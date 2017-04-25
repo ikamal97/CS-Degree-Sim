@@ -16,7 +16,7 @@ public class Calendar implements Subject{
 		
 		currentYear = 2017;
 		currentMonth = index;
-		currentDay = 1;
+		currentDay = 0;
 	}
 
 	/* Increments the calendar to tomorrow */
