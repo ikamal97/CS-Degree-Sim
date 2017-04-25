@@ -223,6 +223,10 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 			character.damageEnergy(4);
 		}
 	}
+	
+	public void displayMessage(boolean isEnabled){
+		
+	}
 
 	public class NightMenuListener implements ActionListener {
 		@Override

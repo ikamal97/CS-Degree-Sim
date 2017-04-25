@@ -148,6 +148,10 @@ public class MainMenu extends JPanel implements Observer, DisplayMenu {//
 		//display();
 	}
 
+	public void displayMessage(boolean isEnabled){
+		
+	}
+	
 	//public void display(){
 	//code for updating display	
 	//}

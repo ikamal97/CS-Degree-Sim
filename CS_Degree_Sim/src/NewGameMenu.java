@@ -316,6 +316,10 @@ public class NewGameMenu extends JPanel implements Observer, DisplayMenu {
 	public void updateTimer(int time){
 		//display();
 	}
+	
+	public void displayMessage(boolean isEnabled){
+		
+	}
 
 	//public void display(){
 	//code for updating display

@@ -11,11 +11,14 @@ public class Game implements Subject {
 	private Character character;
 	public EventTimer eventTimer;
 	private Timer timer;
-	//public int seconds;
+	public int currentSecond;
+	public boolean displayMessage;
+	public Event event;
 	private ArrayList<Observer> observers;
 
 	public Game(){
 		this.character = null;
+		this.displayMessage = false;
 		observers = new ArrayList<Observer>();
 	}
 	
@@ -38,6 +41,7 @@ public class Game implements Subject {
 	public void notifyObservers(){
 		for(Observer observer : observers){
 			observer.updateTimer(eventTimer.getSeconds());
+			observer.displayMessage(displayMessage);
 		}	
 	}
 
@@ -56,6 +60,20 @@ public class Game implements Subject {
 		timer.cancel();
 	}
 	
+	public void pauseTimer(){
+		currentSecond = eventTimer.getSeconds();
+		stopTimer();
+	}
+	
+	public void resumeTimer(){
+		displayMessage = false;
+		event = null;
+		if(currentSecond != 10){
+			eventTimer = new EventTimer();
+			eventTimer.setSeconds(currentSecond + 1);
+		}
+	}
+	
 	public int randomNumberGenerator(){
 		Random RNG = new Random();
 		int randomNumber = RNG.nextInt(100); //0-100
@@ -63,28 +81,39 @@ public class Game implements Subject {
 	}
 
 	public void eventSelector(){
+		//pauseTimer();
 		int randomNumber = randomNumberGenerator();
-		Event event = chooseEventType(randomNumber);
+		event = chooseEventType(randomNumber);
+		
+		if(event != null){
+			displayMessage = true;
+			notifyObservers();
+			pauseTimer();
+		}
+	}
+	
+	public Event getEvent(){
+		return event;
 	}
 
 	public Event chooseEventType(int randomNumber){
 		// 20% Chance of a good event every second
 		if(randomNumber >=0 && randomNumber <= 20){
-			System.out.println("Good Event");
+			System.out.println("Simple Event");
 			displayGoodEventNotification();
-			GoodEvent goodEvent = new GoodEvent();
-			return goodEvent;
+			SimpleEvent simpleEvent = new SimpleEvent();
+			return simpleEvent;
 		}
 
 		//20% chance of a bad event every second
 		else if(randomNumber > 80 && randomNumber <= 100){
-			System.out.println("Bad Event");
-			BadEvent badEvent = new BadEvent();
-			return badEvent;
+			System.out.println("Choice Event");
+			ChoiceEvent choiceEvent = new ChoiceEvent();
+			return choiceEvent;
 		}
 		//60% chance of a neutral event every second
 		else{
-			System.out.println("Neutral Event");
+			//System.out.println("Neutral Event");
 			return null;
 		}
 	}
@@ -105,6 +134,10 @@ public class Game implements Subject {
 	    	return seconds;
 	    }
 	    
+	    public void setSeconds(int curSecond){
+	    	seconds = curSecond;
+	    }
+	    
 	    class EventTimerTask extends TimerTask{
 	    	public void run() {
 	    		System.out.println("second: " + seconds);
@@ -112,7 +145,7 @@ public class Game implements Subject {
 	    		depleteEnergy();
 	    		eventSelector();
 	    		seconds++;
-	    		if(seconds == 11){
+	    		if(seconds == 11 || seconds > 11){
 	    			timer.cancel();
 	    			return;
 	    		}

@@ -81,6 +81,11 @@ public class Character implements Subject {
 		notifyObservers();
 	}
 	
+	public void modifyMorale(int modifier){
+		morale += modifier;
+		notifyObservers();
+	}
+	
 	public void increaseEnergy(int increase){
 		energy += increase;
 		notifyObservers();
