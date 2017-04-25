@@ -35,59 +35,59 @@ class SimpleEvent extends Event{
 	public void selectEvent(int eventNumber){
 		switch(eventNumber){
 		case 0:
-			dialog = "A Professor has extended an assignment deadline by a week. (+2 moral)";
+			dialog = "A Professor has extended an assignment deadline by a week. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 1:
-			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-4 moral)";
+			dialog = "Your computer crashes, losing the progress you have made on your next assignment. (-4 morale)";
 			moralModifier = -4;
 			return;
 		case 2:
-			dialog = "You found the exact solution to an assignment online. (+2 moral)";
+			dialog = "You found the exact solution to an assignment online. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 3:
-			dialog = "You missed the bus and missed a lecture as a result. (-3 moral)";
+			dialog = "You missed the bus and missed a lecture as a result. (-3 morale)";
 			moralModifier = -3;
 			return;
 		case 4:
-			dialog = "You tripped on your way to the next lecture. (-1 moral)";
+			dialog = "You tripped on your way to the next lecture. (-1 morale)";
 			moralModifier = -1;
 			return;
 		case 5:
-			dialog = "You completed extra credit. (+2 moral)";
+			dialog = "You completed extra credit. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 6:
-			dialog = "You forgot your laptop at the previous lecture. However a classmate approaches you after and returns the laptop. (+2 moral)";
+			dialog = "You forgot your laptop at the previous lecture. However a classmate approaches you after and returns the laptop. (+2 morale)";
 			moralModifier = 2;
 			return;
 		case 7:
-			dialog = "At a lecture, the professor pulls up your previous assignment as an example of good coding. (+3 moral)";
+			dialog = "At a lecture, the professor pulls up your previous assignment as an example of good coding. (+3 morale)";
 			moralModifier = 3;
 			return;
 		case 8:
-			dialog = "On your way to class you find a $20 dollar bill by the pavement. (+1 moral)";
+			dialog = "On your way to class you find a $20 dollar bill by the pavement. (+1 morale)";
 			moralModifier = 1;
 			return;	
 		case 9:
-			dialog = "Someone good-looking starts conversation with you during lecture. (+1 moral)";
+			dialog = "Someone good-looking starts conversation with you during lecture. (+1 morale)";
 			moralModifier = 1;
 			return;	
 		case 10:
-			dialog = "You do a risky click on a link that promises homework solutions. You download a virus. (-2 moral)";
+			dialog = "You do a risky click on a link that promises homework solutions. You download a virus. (-2 morale)";
 			moralModifier = -2;
 			return;	
 		case 11:
-			dialog = "It starts raining and you forgot your umbrella. All the items in your bag are soaked. (-1 moral)";
+			dialog = "It starts raining and you forgot your umbrella. All the items in your bag are soaked. (-1 morale)";
 			moralModifier = -1;
 			return;	
 		case 12:
-			dialog = "You forgot your student password. As a result you were unable to complete the required lab-work that day. (-3 moral)";
+			dialog = "You forgot your student password. As a result you were unable to complete the required lab-work that day. (-3 morale)";
 			moralModifier = -3;
 			return;
 		case 13:
-			dialog = "You missed the deadline to register for a class are interested in. (-2 moral)";
+			dialog = "You missed the deadline to register for a class are interested in. (-2 morale)";
 			moralModifier = -2;
 			return;
 		}
