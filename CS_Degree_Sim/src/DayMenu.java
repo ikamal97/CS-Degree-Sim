@@ -20,8 +20,8 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 	private JLabel characterSpriteLabel, backgroundLabel, messageLabel;
 	private JButton quit, endDay, quitMessage, chanceButton, statButton;
 	private DayMenuListener listen;
-	
-	
+
+
 	public DayMenu(csDegreeSim sim, Game game, Character character, Calendar calendar){
 		this.sim = sim;
 		this.character = character;
@@ -29,33 +29,33 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		this.calendar = calendar;
 		this.time = 0;
 		this.messageEnabled = false;
-		
+
 		character.registerObserver(this);
 		game.registerObserver(this);
 		calendar.registerObserver(this);
-		
+
 		character.resetDailyEnergy();
 		initialCharacterInfo();
-		
+
 		createPanels();
-		
+
 		listen = new DayMenuListener();
-		
+
 		createComponents();
 	}
-	
+
 	public void createPanels(){
 		setLayout(new BorderLayout(0, 0));
 		setSize(new Dimension(csDegreeSim.Width, csDegreeSim.Height));
-		
+
 		//bodyPanel = new JPanel();
 		bodyPanel = new JLayeredPane();
 		add(bodyPanel, BorderLayout.CENTER);
 		bodyPanel.setLayout(null);
-		
+
 		background = Toolkit.getDefaultToolkit().getImage("images/day_menu_background_600x402.png");
 	}
-	
+
 	public void createComponents(){
 		quit = new JButton("QUIT");
 		quit.setFont(new Font("Dialog", Font.BOLD, 30));
@@ -75,7 +75,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 			}
 		});
 		bodyPanel.add(quit);
-		
+
 		endDay = new JButton("END WEEK");
 		endDay.setFont(new Font("Dialog", Font.BOLD, 30));
 		endDay.setBackground(Color.GRAY);
@@ -86,99 +86,99 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		endDay.addActionListener(listen);
 		endDay.setActionCommand("endDay");	
 		bodyPanel.add(endDay);
-		
+
 		timerLabel = new JLabel("Time: " + time);
 		timerLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		timerLabel.setForeground(Color.WHITE);
 		timerLabel.setBounds(500, 10, 176, 18);
 		bodyPanel.add(timerLabel);
-		
+
 		moraleLabel = new JLabel("Morale: " + morale);
 		moraleLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		moraleLabel.setForeground(Color.WHITE);
 		moraleLabel.setBounds(10, 10, 176, 18);
 		bodyPanel.add(moraleLabel);
-		
+
 		energyLabel = new JLabel("Energy: " + energy);
 		energyLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		energyLabel.setForeground(Color.WHITE);
 		energyLabel.setBounds(10, 40, 176, 20);
 		bodyPanel.add(energyLabel);
-		
+
 		calendarLabel = new JLabel(calendar.getMonth() + " " + calendar.getDay() + ", " + calendar.getYear());
 		calendarLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		calendarLabel.setForeground(Color.WHITE);
 		calendarLabel.setBounds(240, 10, 200, 20);
 		bodyPanel.add(calendarLabel);
-		
+
 		characterSpriteLabel = new JLabel(new ImageIcon(characterSprite));
 		characterSpriteLabel.setBounds(100, 200, 120, 300);
 		bodyPanel.add(characterSpriteLabel);
-		
+
 		backgroundLabel = new JLabel(new ImageIcon(background));
 		backgroundLabel.setBounds(0, 0, 600, 402);
 		bodyPanel.add(backgroundLabel);
-		
+
 	}
-	
+
 	public void initialCharacterInfo(){
 		this.morale = character.getMorale();
 		this.energy = character.getEnergy();
 		this.characterSprite = character.getCharacterSprite();
 	}
-	
+
 	public void updateStats(int morale, int energy){
 		this.morale = morale;
 		this.energy = energy;
-		
+
 		this.moraleLabel.setText("Morale: " + morale);
 		this.energyLabel.setText("Energy: " + energy);
 	}
-	
+
 	public void updateTraits(int intelligence, int endurance, int charisma){
-		
+
 		//display();
 	}
-	
+
 	public void updateTimer(int time){
 		this.time = time;
 		this.timerLabel.setText("Time: " + time);
 		if(time == 10)
 			endDay.setBackground(Color.GREEN);
 	}
-	
+
 	@Override
 	public void updateCalendar() {
 		calendarLabel.setText(calendar.getMonth() + " " + calendar.getDay() + ", " + calendar.getYear());
 	}
-	
+
 	public void displayMessage(boolean isEnabled){
 		if(isEnabled){
 			messageEnabled = true;
-			
+
 			Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-			
-			
-			
+
+
+
 			gameEvent = game.getEvent();
-			
+
 			String html1 = "<html><body style='width: ";
-	        String html2 = "px'>";
-			
-	        if(gameEvent.eventType.equals("simple")){
-	        	messagePanel = new JPanel(new GridLayout(2, 1));//new BorderLayout()
+			String html2 = "px'>";
+
+			if(gameEvent.eventType.equals("simple")){
+				messagePanel = new JPanel(new GridLayout(2, 1));//new BorderLayout()
 				messagePanel.setBackground(Color.GRAY);
 				messagePanel.setBounds(100, 100, 400, 200);
 				messagePanel.setBorder(border);
 				messagePanel.setOpaque(true);
-	        	
+
 				messageLabel = new JLabel(html1 + "200" + html2 + gameEvent.dialog);//
 				//messageLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 				messageLabel.setHorizontalTextPosition(JLabel.CENTER);
 				messageLabel.setForeground(Color.WHITE);
 				messageLabel.setBounds(150, 150, 400, 18);
 				messagePanel.add(messageLabel);
-				
+
 				quitMessage = new JButton("OKAY ("+ gameEvent.moralModifier + " moral)");
 				quitMessage.setFont(new Font("Dialog", Font.BOLD, 30));
 				quitMessage.setBackground(Color.BLUE);
@@ -189,22 +189,22 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				quitMessage.addActionListener(listen);
 				quitMessage.setActionCommand("okay");	
 				messagePanel.add(quitMessage);
-	        	
-	        }
-	        else if(gameEvent.eventType.equals("choice")){
-	        	messagePanel = new JPanel(new GridLayout(3, 1));//new BorderLayout()
+
+			}
+			else if(gameEvent.eventType.equals("choice")){
+				messagePanel = new JPanel(new GridLayout(3, 1));//new BorderLayout()
 				messagePanel.setBackground(Color.GRAY);
 				messagePanel.setBounds(100, 100, 400, 200);
 				messagePanel.setBorder(border);
 				messagePanel.setOpaque(true);
-	        	
+
 				messageLabel = new JLabel(html1 + "200" + html2 + gameEvent.dialog);//
 				//messageLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 				messageLabel.setHorizontalTextPosition(JLabel.CENTER);
 				messageLabel.setForeground(Color.WHITE);
 				messageLabel.setBounds(150, 150, 400, 18);
 				messagePanel.add(messageLabel);
-				
+
 				chanceButton = new JButton(gameEvent.successChance + "% Success Chance");
 				chanceButton.setFont(new Font("Dialog", Font.BOLD, 30));
 				chanceButton.setBackground(Color.BLUE);
@@ -215,7 +215,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				chanceButton.addActionListener(listen);
 				chanceButton.setActionCommand("chanceEvent");	
 				messagePanel.add(chanceButton);
-	        	
+
 				statButton = new JButton(gameEvent.statSuccess + " " + gameEvent.statLimit);
 				statButton.setFont(new Font("Dialog", Font.BOLD, 30));
 				statButton.setBackground(Color.BLUE);
@@ -226,21 +226,21 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				statButton.addActionListener(listen);
 				statButton.setActionCommand("statEvent");	
 				messagePanel.add(statButton);
-				
-	        }
-			
-		
+
+			}
+
+
 			bodyPanel.add(messagePanel);
 		}
 	}
-	
+
 	public void removeMessagePanel(){
 		bodyPanel.remove(messagePanel);
 		bodyPanel.revalidate();
 		bodyPanel.repaint();
 		messageEnabled = false;
 	}
-	
+
 	public void rollChanceEvent(int chanceLimit){
 		Random RNG = new Random();
 		int randomNumber = RNG.nextInt(100); //0-100
@@ -253,7 +253,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 			System.out.println("Chance event failed");
 		}
 	}
-	
+
 	public int getStat(String stat){
 		switch(stat){
 		case "INT":
@@ -266,7 +266,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 			return 0;
 		}
 	}
-	
+
 	public class DayMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
@@ -277,6 +277,10 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 			if (event.getActionCommand().equals("endDay")) {
 				if(time == 10 && messageEnabled == false){
 					sim.endDay();
+				}
+				//End Game Victory
+				if(time == 10 && messageEnabled == false && calendar.getWeek() >= 46){
+					sim.winGame();
 				}
 			}
 			if (event.getActionCommand().equals("okay")) {
@@ -296,7 +300,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 					character.increaseMorale(gameEvent.moralIncrease);
 					game.resumeTimer();
 				}
-					
+
 			}
 		}
 	}

@@ -84,6 +84,11 @@ public class csDegreeSim{
 		setPanel(new NightMenu(this, gameSystem, playerCharacter));
 	}
 	
+	public void winGame(){
+		System.out.println("You win!");
+		setPanel(new WinGameMenu(this, gameSystem, playerCharacter));
+	}
+	
 	public JFrame getJFrame(){
 		return frame;
 	}
