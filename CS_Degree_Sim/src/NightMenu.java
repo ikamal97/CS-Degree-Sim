@@ -50,7 +50,7 @@ public class NightMenu extends JPanel implements Observer, DisplayMenu {
 	}
 
 	public void createComponents() {
-		nextDay = new JButton("NEXT DAY");
+		nextDay = new JButton("NEXT WEEK");
 		nextDay.setFont(new Font("Dialog", Font.BOLD, 30));
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 		nextDay.setBackground(Color.WHITE);

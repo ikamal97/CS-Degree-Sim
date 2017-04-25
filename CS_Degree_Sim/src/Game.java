@@ -55,7 +55,7 @@ public class Game implements Subject {
 
 	public void startDay(){
 		System.out.println("Day is starting");
-		calendar.nextDay();
+		calendar.nextWeek();
 		eventTimer = new EventTimer();
 	}
 

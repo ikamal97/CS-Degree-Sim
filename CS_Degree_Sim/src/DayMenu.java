@@ -76,7 +76,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		});
 		bodyPanel.add(quit);
 		
-		endDay = new JButton("END DAY");
+		endDay = new JButton("END WEEK");
 		endDay.setFont(new Font("Dialog", Font.BOLD, 30));
 		endDay.setBackground(Color.GRAY);
 		endDay.setForeground(Color.BLACK);
@@ -108,7 +108,7 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 		calendarLabel = new JLabel(calendar.getMonth() + " " + calendar.getDay() + ", " + calendar.getYear());
 		calendarLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		calendarLabel.setForeground(Color.WHITE);
-		calendarLabel.setBounds(250, 10, 176, 20);
+		calendarLabel.setBounds(240, 10, 200, 20);
 		bodyPanel.add(calendarLabel);
 		
 		characterSpriteLabel = new JLabel(new ImageIcon(characterSprite));

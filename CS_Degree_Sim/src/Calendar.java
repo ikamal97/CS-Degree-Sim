@@ -20,11 +20,12 @@ public class Calendar implements Subject{
 	}
 
 	/* Increments the calendar to next week */
-	public void nextDay(){
+	public void nextWeek(){
 		// End of month case
-		if(currentDay == day[index]){
+		if(currentDay+7 >= day[index]){
 			index++;
-			currentDay = 0;
+			currentDay = 1;
+			currentMonth = index; 
 		}
 		// End of year case
 		else if(currentMonth == 4 && currentDay == day[4]){
@@ -33,7 +34,7 @@ public class Calendar implements Subject{
 			currentYear = 2018;
 		}
 		else{
-			currentDay++;
+			currentDay+=7;
 		}
 		notifyObservers();
 	}
