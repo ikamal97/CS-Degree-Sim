@@ -302,6 +302,10 @@ public class DayMenu extends JPanel implements Observer, DisplayMenu {
 				}
 
 			}
+			
+			if(character.isDropOut()){
+				sim.loseGame();
+			}
 		}
 	}
 

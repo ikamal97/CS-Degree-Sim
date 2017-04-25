@@ -14,6 +14,7 @@ public class Character implements Subject {
 	private int morale, energy, maxEnergy;
 	private int intelligence, endurance, charisma;
 	private ArrayList<Observer> observers;
+	private boolean dropOut;
 	
 	public Character(){
 		observers = new ArrayList<Observer>();
@@ -24,6 +25,7 @@ public class Character implements Subject {
 		intelligence = 5;
 		endurance = 5;
 		charisma = 5;
+		dropOut = false;
 	}
 	
 	public void registerObserver(Observer o){
@@ -93,7 +95,19 @@ public class Character implements Subject {
 	
 	public void damageMorale(int damage){
 		morale -= damage;
+		if(morale <= 0){
+			morale = 0;
+			dropOut();
+		}
 		notifyObservers();
+	}
+	
+	public void dropOut(){
+		dropOut = true;
+	}
+	
+	public boolean isDropOut(){
+		return dropOut;
 	}
 	
 	public void damageEnergy(int damage){
